@@ -10,7 +10,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+RUN chmod +x docker-entrypoint.sh
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# docker-entrypoint.sh runs migrations before starting the server, and binds
+# to $PORT if set (Render and similar platforms assign this dynamically).
+CMD ["./docker-entrypoint.sh"]

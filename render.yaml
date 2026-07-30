@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: in-flow-encer-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_DATABASE_URL
+        sync: false # paste your Supabase Postgres connection string here
+      - key: APP_ENVIRONMENT
+        value: production
+      - key: APP_CORS_ORIGINS
+        sync: false # comma-separated: your Cloudflare Pages URL + custom domain
