@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { apiDelete, apiPatchJson, apiPostForm } from './client'
-import { queryKeys } from './queryKeys'
 import { importReportSchema, overlayLayerSchema, type OverlayVisibility } from './schemas'
 
 export interface OverlayImportParams {
@@ -30,7 +29,7 @@ export function useImportOverlayCsv() {
         buildOverlayFormData(params),
       ),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: queryKeys.overlays })
+      await queryClient.invalidateQueries({ queryKey: ['overlays'] })
     },
   })
 }
@@ -46,7 +45,7 @@ export function useImportOverlayGeojson() {
         buildOverlayFormData(params),
       ),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: queryKeys.overlays })
+      await queryClient.invalidateQueries({ queryKey: ['overlays'] })
     },
   })
 }
@@ -63,7 +62,7 @@ export function usePatchOverlay() {
     mutationFn: ({ id, ...body }: OverlayPatchParams) =>
       apiPatchJson(`/overlays/${id}`, overlayLayerSchema, 'overlays/{id}', body),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: queryKeys.overlays })
+      await queryClient.invalidateQueries({ queryKey: ['overlays'] })
     },
   })
 }
@@ -73,7 +72,7 @@ export function useDeleteOverlay() {
   return useMutation({
     mutationFn: (id: string) => apiDelete(`/overlays/${id}`),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: queryKeys.overlays })
+      await queryClient.invalidateQueries({ queryKey: ['overlays'] })
     },
   })
 }

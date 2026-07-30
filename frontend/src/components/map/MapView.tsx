@@ -9,6 +9,7 @@ import { useAttentionHeatmapSync } from './useAttentionHeatmapSync'
 import { useSocialPointsSync } from './useSocialPointsSync'
 import { OverlayMapLayer } from './OverlayMapLayer'
 import { defaultLayerState } from '../../state/layers'
+import { useTenant } from '../../state/tenant'
 
 interface MapViewProps {
   attentionCells: AttentionCell[]
@@ -28,6 +29,8 @@ export function MapView({
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const [map, setMap] = useState<MapLibreMap | null>(null)
+  const { activeSlug } = useTenant()
+  const fittedTenantRef = useRef<string | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -52,6 +55,23 @@ export function MapView({
       setMap(null)
     }
   }, [])
+
+  // Fly to the active tenant's own places once its data has loaded, instead
+  // of always showing the fixed Bavarian Alps overview. Runs once per tenant
+  // switch (tracked via fittedTenantRef), not on every filter/data refresh,
+  // so it doesn't yank the view back while a user is panning around.
+  useEffect(() => {
+    if (!map || !activeSlug) return
+    if (fittedTenantRef.current === activeSlug) return
+    if (attentionCells.length === 0) return
+
+    const bounds = new maplibregl.LngLatBounds()
+    for (const cell of attentionCells) {
+      bounds.extend([cell.lon, cell.lat])
+    }
+    map.fitBounds(bounds, { padding: 80, maxZoom: 12, duration: 800 })
+    fittedTenantRef.current = activeSlug
+  }, [map, activeSlug, attentionCells])
 
   const attentionData = attentionCellsToGeoJSON(attentionCells)
   const socialData = socialContentToGeoJSON(socialContentItems, places)
