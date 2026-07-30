@@ -5,6 +5,8 @@ container/venv, with APP_DATABASE_URL pointing at a migrated database).
 Idempotent: re-running does not create duplicate tenants, places or content.
 """
 
+import csv
+import io
 import json
 import uuid
 from pathlib import Path
@@ -28,16 +30,24 @@ SAMPLE_DATA_DIR = Path(__file__).resolve().parent.parent.parent / "sample-data"
 # this, one tenant covering "everything" (as an earlier version of this
 # script did for Garmisch) looks indistinguishable from a cross-tenant data
 # leak even though isolation is enforced correctly at the API/DB layer.
-GARMISCH_PLACE_NAMES = ("Zugspitze", "Eibsee", "Garmisch-Partenkirchen", "Tegernsee", "Walchensee", "Herzogstand")
+#
+# Region assignment follows the gazetteer's own `region` field (see
+# gazetteer.py), not just proximity on the map: Tegernsee/Walchensee/
+# Herzogstand are "Oberland" (Miesbach / Bad Tölz-Wolfratshausen districts),
+# genuinely a different administrative area from Garmisch-Partenkirchen's
+# "Werdenfelser Land" — a real Garmisch tourism board would not cover a lake
+# an hour away in a different district.
+GARMISCH_PLACE_NAMES = ("Zugspitze", "Eibsee", "Garmisch-Partenkirchen")
 BERCHTESGADEN_PLACE_NAMES = ("Berchtesgaden", "Königssee")
+OBERLAND_PLACE_NAMES = ("Tegernsee", "Walchensee", "Herzogstand")
 # The fixture's intentionally-unresolved/ambiguous location examples (see
 # seed/generate_fixture.py) mention no gazetteer place by name, so they are
 # kept only on the primary demo tenant to preserve that demonstration.
 AMBIGUOUS_LOCATION_TEXTS = {"Alm", "Berghütte", "Dorfplatz", "Aussichtspunkt", "Wanderweg"}
 
 
-def _mentions_any(caption: str | None, names: tuple[str, ...]) -> bool:
-    return any(name in (caption or "") for name in names)
+def _mentions_any(text: str | None, names: tuple[str, ...]) -> bool:
+    return any(name in (text or "") for name in names)
 
 
 def _garmisch_filter(row: dict) -> bool:
@@ -50,20 +60,44 @@ def _berchtesgaden_filter(row: dict) -> bool:
     return _mentions_any(row.get("caption"), BERCHTESGADEN_PLACE_NAMES)
 
 
+def _oberland_filter(row: dict) -> bool:
+    return _mentions_any(row.get("caption"), OBERLAND_PLACE_NAMES)
+
+
+# Overlay CSV/GeoJSON "label" text doesn't always literally repeat a
+# gazetteer place name (e.g. "Wetterstein Nature Reserve" is Zugspitze's
+# area), so overlay filtering uses its own keyword set per tenant rather
+# than reusing the social-content place-name tuples above.
+GARMISCH_OVERLAY_KEYWORDS = ("Zugspitze", "Eibsee", "Garmisch-Partenkirchen", "Wetterstein")
+BERCHTESGADEN_OVERLAY_KEYWORDS = ("Berchtesgaden", "Königssee")
+OBERLAND_OVERLAY_KEYWORDS = ("Tegernsee", "Walchensee", "Herzogstand")
+
 TENANT_CONFIGS = [
     {
         "name": "Garmisch-Partenkirchen Tourism",
         "slug": "garmisch-partenkirchen",
         "social_filter": _garmisch_filter,
-        "overlays": ["visitor_counter.csv", "parking_occupancy.csv", "protected_areas.geojson"],
+        "overlay_keywords": GARMISCH_OVERLAY_KEYWORDS,
     },
     {
         "name": "Berchtesgaden Tourism",
         "slug": "berchtesgaden",
         "social_filter": _berchtesgaden_filter,
-        "overlays": ["protected_areas.geojson"],
+        "overlay_keywords": BERCHTESGADEN_OVERLAY_KEYWORDS,
+    },
+    {
+        "name": "Tegernsee-Oberland Tourism",
+        "slug": "tegernsee-oberland",
+        "social_filter": _oberland_filter,
+        "overlay_keywords": OBERLAND_OVERLAY_KEYWORDS,
     },
 ]
+
+# Every tenant is offered every overlay file; rows/features whose label
+# doesn't match the tenant's own keywords are filtered out, and the import is
+# skipped entirely if nothing matches (e.g. Oberland has no protected-area
+# polygon in the sample data).
+OVERLAY_FILES = ["visitor_counter.csv", "parking_occupancy.csv", "protected_areas.geojson"]
 
 OVERLAY_MEASUREMENT_TYPES = {
     "visitor_counter.csv": ("visitor_count", "people"),
@@ -98,6 +132,32 @@ def load_fixture() -> list[dict]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _filter_csv_by_label(file_bytes: bytes, keywords: tuple[str, ...]) -> bytes | None:
+    text = file_bytes.decode("utf-8-sig")
+    reader = csv.DictReader(io.StringIO(text))
+    fieldnames = reader.fieldnames
+    if fieldnames is None:
+        return None
+    rows = [row for row in reader if _mentions_any(row.get("label"), keywords)]
+    if not rows:
+        return None
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(rows)
+    return output.getvalue().encode("utf-8")
+
+
+def _filter_geojson_by_label(file_bytes: bytes, keywords: tuple[str, ...]) -> bytes | None:
+    data = json.loads(file_bytes.decode("utf-8"))
+    features = [
+        f for f in data["features"] if _mentions_any((f.get("properties") or {}).get("label"), keywords)
+    ]
+    if not features:
+        return None
+    return json.dumps({"type": "FeatureCollection", "features": features}).encode("utf-8")
+
+
 def seed_tenant(db, config: dict, fixture: list[dict]) -> None:
     tenants = TenantRepository(db)
     tenant = tenants.get_by_slug(config["slug"])
@@ -125,10 +185,19 @@ def seed_tenant(db, config: dict, fixture: list[dict]) -> None:
     )
 
     overlay_service = OverlayImportService(db)
-    for filename in config["overlays"]:
+    keywords = config["overlay_keywords"]
+    for filename in OVERLAY_FILES:
         file_path = SAMPLE_DATA_DIR / filename
         measurement_type, unit = OVERLAY_MEASUREMENT_TYPES[filename]
-        body = file_path.read_bytes()
+        raw_body = file_path.read_bytes()
+        if filename.endswith(".csv"):
+            body = _filter_csv_by_label(raw_body, keywords)
+        else:
+            body = _filter_geojson_by_label(raw_body, keywords)
+        if body is None:
+            print(f"[{config['slug']}] overlay import {filename}: skipped (no matching rows for this tenant)")
+            continue
+
         if filename.endswith(".csv"):
             _layer, report = overlay_service.import_csv(
                 tenant.id, body, name=file_path.stem, measurement_type=measurement_type, unit=unit

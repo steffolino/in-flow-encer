@@ -6,13 +6,9 @@ import { useFilters } from '../../state/filters'
  * clearly-labeled set plus free text is avoided in favor of accessible
  * native selects. */
 const PLATFORM_OPTIONS = ['instagram', 'tiktok', 'facebook', 'x', 'youtube']
-const REGION_OPTIONS = [
-  'Garmisch-Partenkirchen',
-  'Werdenfelser Land',
-  'Berchtesgadener Land',
-  'Oberland',
-  'Tegernsee-Schliersee',
-]
+// Must match the `region` field on Place rows (see backend/seed/gazetteer.py)
+// exactly, since this value is sent straight through as a query filter.
+const REGION_OPTIONS = ['Werdenfelser Land', 'Berchtesgadener Land', 'Oberland']
 const AUTHOR_CATEGORY_OPTIONS = ['visitor', 'local', 'business', 'influencer', 'tourism_board']
 
 export function FilterPanel(): React.JSX.Element {
