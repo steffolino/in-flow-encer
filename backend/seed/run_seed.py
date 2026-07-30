@@ -23,17 +23,44 @@ from seed.gazetteer import GAZETTEER
 
 SAMPLE_DATA_DIR = Path(__file__).resolve().parent.parent.parent / "sample-data"
 
+# Each tenant's fixture rows are restricted to its own region's places, so
+# switching tenants shows genuinely different, non-overlapping data. Without
+# this, one tenant covering "everything" (as an earlier version of this
+# script did for Garmisch) looks indistinguishable from a cross-tenant data
+# leak even though isolation is enforced correctly at the API/DB layer.
+GARMISCH_PLACE_NAMES = ("Zugspitze", "Eibsee", "Garmisch-Partenkirchen", "Tegernsee", "Walchensee", "Herzogstand")
+BERCHTESGADEN_PLACE_NAMES = ("Berchtesgaden", "Königssee")
+# The fixture's intentionally-unresolved/ambiguous location examples (see
+# seed/generate_fixture.py) mention no gazetteer place by name, so they are
+# kept only on the primary demo tenant to preserve that demonstration.
+AMBIGUOUS_LOCATION_TEXTS = {"Alm", "Berghütte", "Dorfplatz", "Aussichtspunkt", "Wanderweg"}
+
+
+def _mentions_any(caption: str | None, names: tuple[str, ...]) -> bool:
+    return any(name in (caption or "") for name in names)
+
+
+def _garmisch_filter(row: dict) -> bool:
+    if row.get("location_text") in AMBIGUOUS_LOCATION_TEXTS:
+        return True
+    return _mentions_any(row.get("caption"), GARMISCH_PLACE_NAMES)
+
+
+def _berchtesgaden_filter(row: dict) -> bool:
+    return _mentions_any(row.get("caption"), BERCHTESGADEN_PLACE_NAMES)
+
+
 TENANT_CONFIGS = [
     {
         "name": "Garmisch-Partenkirchen Tourism",
         "slug": "garmisch-partenkirchen",
-        "social_filter": None,
+        "social_filter": _garmisch_filter,
         "overlays": ["visitor_counter.csv", "parking_occupancy.csv", "protected_areas.geojson"],
     },
     {
         "name": "Berchtesgaden Tourism",
         "slug": "berchtesgaden",
-        "social_filter": ("Berchtesgaden", "Königssee"),
+        "social_filter": _berchtesgaden_filter,
         "overlays": ["protected_areas.geojson"],
     },
 ]
@@ -80,8 +107,7 @@ def seed_tenant(db, config: dict, fixture: list[dict]) -> None:
 
     items = fixture
     if config["social_filter"] is not None:
-        needles = config["social_filter"]
-        items = [row for row in fixture if any(n in (row.get("caption") or "") for n in needles)]
+        items = [row for row in fixture if config["social_filter"](row)]
 
     source = SourceRepository(db).get_or_create(
         tenant.id,
