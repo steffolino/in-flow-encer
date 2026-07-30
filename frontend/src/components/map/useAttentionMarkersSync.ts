@@ -100,7 +100,7 @@ export function useAttentionMarkersSync(
         event: MapMouseEvent & { features?: MapGeoJSONFeature[] },
       ): void => {
         const feature = event.features?.[0]
-        if (!feature || feature.geometry.type !== 'Point') return
+        if (feature?.geometry.type !== 'Point') return
         const props = feature.properties as AttentionPointProperties
         onSelectPlaceRef.current(props.place_id)
 

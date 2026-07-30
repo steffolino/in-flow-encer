@@ -4,7 +4,7 @@ export function Header(): React.JSX.Element {
   return (
     <>
       <header className="app-header">
-        <h1>InFlowEncer — Visitor Flow &amp; Attention Monitor</h1>
+        <h1>Inflowencer — Visitor Flow &amp; Attention Monitor</h1>
         <TenantSwitcher />
       </header>
       <div className="synthetic-data-banner" role="note">

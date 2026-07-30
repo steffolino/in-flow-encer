@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAttention } from '../api/useAttention'
 import { useComparison } from '../api/useComparison'
 import { useOverlays } from '../api/useOverlays'
@@ -24,6 +24,12 @@ export function MapPage(): React.JSX.Element {
   const { layers } = useLayers()
   const hasTenant = Boolean(activeSlug)
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null)
+
+  // A place selected under one tenant has no meaning under another; clear it
+  // whenever the active tenant changes so a stale selection can't linger.
+  useEffect(() => {
+    setSelectedPlaceId(null)
+  }, [activeSlug])
 
   const attentionQuery = useAttention(filters, hasTenant)
   const comparisonQuery = useComparison(filters, hasTenant)
