@@ -1,0 +1,7 @@
+latitude,longitude,timestamp,value,label,external_id
+47.4917,11.0956,2026-06-21T12:00:00,72,Garmisch-Partenkirchen P1,parking-gapa-p1-01
+47.4917,11.0956,2026-06-28T12:00:00,88,Garmisch-Partenkirchen P1,parking-gapa-p1-02
+47.6303,13.0018,2026-06-21T12:00:00,65,Berchtesgaden central car park,parking-berchtesgaden-01
+47.6303,13.0018,2026-06-28T12:00:00,80,Berchtesgaden central car park,parking-berchtesgaden-02
+47.4636,10.9986,2026-06-21T12:00:00,95,Eibsee car park,parking-eibsee-01
+47.4636,10.9986,2026-06-28T12:00:00,97,Eibsee car park,parking-eibsee-02

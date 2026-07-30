@@ -1,0 +1,2309 @@
+[
+  {
+    "external_id": "fixture-0073",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_004",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-11T08:11:16",
+    "caption": "Königssee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_004",
+    "engagement_count": 399,
+    "estimated_reach": 19239,
+    "location_text": null,
+    "explicit_lat": 47.595697,
+    "explicit_lon": 12.972713,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0105",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_043",
+    "author_category": "local_business",
+    "published_at": "2026-05-31T08:46:40",
+    "caption": "Hiking trip to Tegernsee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_043",
+    "engagement_count": 127,
+    "estimated_reach": 5795,
+    "location_text": "tegern see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0026",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_018",
+    "author_category": "tourist",
+    "published_at": "2026-07-01T00:58:37",
+    "caption": "Cable car ride up to Eibsee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_018",
+    "engagement_count": 114,
+    "estimated_reach": 17769,
+    "location_text": "Eibsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0028",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_043",
+    "author_category": "tourist",
+    "published_at": "2026-06-24T05:50:37",
+    "caption": "Grabbed lunch near Eibsee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_043",
+    "engagement_count": 221,
+    "estimated_reach": 13570,
+    "location_text": "eib see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0062",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_030",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-25T04:52:50",
+    "caption": "Cable car ride up to Berchtesgaden was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_030",
+    "engagement_count": 247,
+    "estimated_reach": 5660,
+    "location_text": null,
+    "explicit_lat": 47.628737,
+    "explicit_lon": 12.994062,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0051",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_012",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-09T14:16:51",
+    "caption": "Sunset over Berchtesgaden tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_012",
+    "engagement_count": 347,
+    "estimated_reach": 8231,
+    "location_text": null,
+    "explicit_lat": 47.637932,
+    "explicit_lon": 12.999414,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0022",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_043",
+    "author_category": "local_business",
+    "published_at": "2026-05-04T08:38:18",
+    "caption": "Cable car ride up to Eibsee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_043",
+    "engagement_count": 489,
+    "estimated_reach": 18115,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0038",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_043",
+    "author_category": "tourist",
+    "published_at": "2026-05-02T22:18:08",
+    "caption": "Sunset over Zugspitze tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_043",
+    "engagement_count": 371,
+    "estimated_reach": 10395,
+    "location_text": null,
+    "explicit_lat": 47.432749,
+    "explicit_lon": 10.977207,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0114",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_006",
+    "author_category": "tourist",
+    "published_at": "2026-06-26T02:42:58",
+    "caption": "Nice spot at the wanderweg today.",
+    "hashtags": [],
+    "content_url": null,
+    "engagement_count": 91,
+    "estimated_reach": 1812,
+    "location_text": "Wanderweg",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "note": "intentionally unresolved location"
+    }
+  },
+  {
+    "external_id": "fixture-0079",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_017",
+    "author_category": "influencer",
+    "published_at": "2026-05-19T09:42:50",
+    "caption": "Hiking trip to Walchensee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_017",
+    "engagement_count": 245,
+    "estimated_reach": 735,
+    "location_text": "Walchensee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0044",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_019",
+    "author_category": "local_business",
+    "published_at": "2026-07-11T20:33:08",
+    "caption": "Zugspitze views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_019",
+    "engagement_count": 329,
+    "estimated_reach": 8750,
+    "location_text": null,
+    "explicit_lat": 47.426881,
+    "explicit_lon": 10.977189,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0034",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_013",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-21T12:50:21",
+    "caption": "Family day out near Zugspitze.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_013",
+    "engagement_count": 116,
+    "estimated_reach": 2016,
+    "location_text": "Zugspitze",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0088",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_028",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-14T02:40:07",
+    "caption": "Family day out near Herzogstand.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_028",
+    "engagement_count": 483,
+    "estimated_reach": 2939,
+    "location_text": null,
+    "explicit_lat": 47.611897,
+    "explicit_lon": 11.309821,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0107",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_045",
+    "author_category": "influencer",
+    "published_at": "2026-06-26T05:41:21",
+    "caption": "Cable car ride up to Tegernsee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_045",
+    "engagement_count": 41,
+    "estimated_reach": 7748,
+    "location_text": "Tegernsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0051",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_012",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-09T14:16:51",
+    "caption": "Sunset over Berchtesgaden tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_012",
+    "engagement_count": 347,
+    "estimated_reach": 8231,
+    "location_text": null,
+    "explicit_lat": 47.637932,
+    "explicit_lon": 12.999414,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0031",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_004",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-18T15:49:47",
+    "caption": "Beautiful morning at Eibsee! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_004",
+    "engagement_count": 52,
+    "estimated_reach": 7845,
+    "location_text": "Eibsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0058",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_028",
+    "author_category": "local_business",
+    "published_at": "2026-07-11T03:20:31",
+    "caption": "Hiking trip to Berchtesgaden was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_028",
+    "engagement_count": 490,
+    "estimated_reach": 10919,
+    "location_text": "Berchtesgaden",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0011",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_054",
+    "author_category": "local_business",
+    "published_at": "2026-07-12T00:53:36",
+    "caption": "Beautiful morning at Garmisch-Partenkirchen! #alps",
+    "hashtags": [
+      "garmisch-partenkirchen"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_054",
+    "engagement_count": 122,
+    "estimated_reach": 1151,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0101",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_032",
+    "author_category": "tourist",
+    "published_at": "2026-05-06T12:55:16",
+    "caption": "Hiking trip to Tegernsee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_032",
+    "engagement_count": 300,
+    "estimated_reach": 1856,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0017",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_044",
+    "author_category": "tourist",
+    "published_at": "2026-07-11T20:33:17",
+    "caption": "Family day out near Garmisch-Partenkirchen.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_044",
+    "engagement_count": 62,
+    "estimated_reach": 9717,
+    "location_text": "garmisch",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0048",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_038",
+    "author_category": "tourist",
+    "published_at": "2026-07-11T11:39:31",
+    "caption": "Anyone else visiting Zugspitze this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_038",
+    "engagement_count": 225,
+    "estimated_reach": 4276,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0068",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_040",
+    "author_category": "influencer",
+    "published_at": "2026-07-12T03:11:42",
+    "caption": "Grabbed lunch near Königssee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_040",
+    "engagement_count": 464,
+    "estimated_reach": 5315,
+    "location_text": null,
+    "explicit_lat": 47.595634,
+    "explicit_lon": 12.976994,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0013",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_017",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-04T04:56:40",
+    "caption": "Anyone else visiting Garmisch-Partenkirchen this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_017",
+    "engagement_count": 131,
+    "estimated_reach": 18494,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0081",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_054",
+    "author_category": "local_business",
+    "published_at": "2026-05-02T12:09:09",
+    "caption": "Beautiful morning at Walchensee! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_054",
+    "engagement_count": 127,
+    "estimated_reach": 4236,
+    "location_text": "walchen see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0112",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_029",
+    "author_category": "tourist",
+    "published_at": "2026-06-18T21:43:17",
+    "caption": "Nice spot at the dorfplatz today.",
+    "hashtags": [],
+    "content_url": null,
+    "engagement_count": 81,
+    "estimated_reach": 181,
+    "location_text": "Dorfplatz",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "note": "intentionally unresolved location"
+    }
+  },
+  {
+    "external_id": "fixture-0040",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_005",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-15T10:51:11",
+    "caption": "Zugspitze views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_005",
+    "engagement_count": 264,
+    "estimated_reach": 8790,
+    "location_text": "Zugspitze",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0104",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_040",
+    "author_category": "influencer",
+    "published_at": "2026-05-21T19:37:22",
+    "caption": "Hiking trip to Tegernsee was unforgettable.",
+    "hashtags": [
+      "tegernsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_040",
+    "engagement_count": 490,
+    "estimated_reach": 6908,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0099",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_056",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-07T03:07:34",
+    "caption": "Beautiful morning at Tegernsee! #alps",
+    "hashtags": [
+      "tegernsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_056",
+    "engagement_count": 298,
+    "estimated_reach": 9417,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0108",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_008",
+    "author_category": "local_business",
+    "published_at": "2026-06-27T20:13:42",
+    "caption": "Tegernsee views never disappoint.",
+    "hashtags": [
+      "tegernsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_008",
+    "engagement_count": 336,
+    "estimated_reach": 4982,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0021",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_016",
+    "author_category": "local_business",
+    "published_at": "2026-05-15T22:16:47",
+    "caption": "Hiking trip to Eibsee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_016",
+    "engagement_count": 379,
+    "estimated_reach": 16024,
+    "location_text": "eib see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0095",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_018",
+    "author_category": "influencer",
+    "published_at": "2026-07-01T01:23:59",
+    "caption": "Family day out near Herzogstand.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_018",
+    "engagement_count": 123,
+    "estimated_reach": 4053,
+    "location_text": "herzogstandbahn",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0109",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_004",
+    "author_category": "local_business",
+    "published_at": "2026-06-27T21:29:03",
+    "caption": "Anyone else visiting Tegernsee this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_004",
+    "engagement_count": 309,
+    "estimated_reach": 18751,
+    "location_text": "tegern see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0077",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_038",
+    "author_category": "tourist",
+    "published_at": "2026-06-21T04:41:49",
+    "caption": "Beautiful morning at Königssee! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_038",
+    "engagement_count": 47,
+    "estimated_reach": 14144,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0065",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_032",
+    "author_category": "local_business",
+    "published_at": "2026-05-31T13:43:47",
+    "caption": "Grabbed lunch near Königssee, highly recommend the area.",
+    "hashtags": [
+      "koenigssee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_032",
+    "engagement_count": 129,
+    "estimated_reach": 4935,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0054",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_026",
+    "author_category": "tourist",
+    "published_at": "2026-05-11T19:43:29",
+    "caption": "Sunset over Berchtesgaden tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_026",
+    "engagement_count": 447,
+    "estimated_reach": 2374,
+    "location_text": "berchtesgaden nationalpark",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0010",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_011",
+    "author_category": "local_business",
+    "published_at": "2026-06-18T11:11:23",
+    "caption": "Cable car ride up to Garmisch-Partenkirchen was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_011",
+    "engagement_count": 199,
+    "estimated_reach": 8945,
+    "location_text": "Garmisch-Partenkirchen",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0050",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_060",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-02T04:03:55",
+    "caption": "Zugspitze views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_060",
+    "engagement_count": 447,
+    "estimated_reach": 5424,
+    "location_text": "Zugspitze",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0030",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_013",
+    "author_category": "local_business",
+    "published_at": "2026-06-20T07:18:27",
+    "caption": "Cable car ride up to Eibsee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_013",
+    "engagement_count": 241,
+    "estimated_reach": 8285,
+    "location_text": null,
+    "explicit_lat": 47.453875,
+    "explicit_lon": 10.990046,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0069",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_049",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-08T01:02:08",
+    "caption": "Königssee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_049",
+    "engagement_count": 435,
+    "estimated_reach": 9186,
+    "location_text": "Königssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0100",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_022",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-23T18:53:13",
+    "caption": "Anyone else visiting Tegernsee this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_022",
+    "engagement_count": 134,
+    "estimated_reach": 15754,
+    "location_text": "tegern see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0110",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_029",
+    "author_category": "tourist",
+    "published_at": "2026-06-21T00:52:57",
+    "caption": "Nice spot at the alm today.",
+    "hashtags": [],
+    "content_url": null,
+    "engagement_count": 64,
+    "estimated_reach": 1510,
+    "location_text": "Alm",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "note": "intentionally unresolved location"
+    }
+  },
+  {
+    "external_id": "fixture-0027",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_051",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-21T10:09:16",
+    "caption": "Cable car ride up to Eibsee was worth it.",
+    "hashtags": [
+      "eibsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_051",
+    "engagement_count": 418,
+    "estimated_reach": 13438,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0055",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_044",
+    "author_category": "influencer",
+    "published_at": "2026-05-14T13:12:15",
+    "caption": "Sunset over Berchtesgaden tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_044",
+    "engagement_count": 485,
+    "estimated_reach": 1004,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0072",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_005",
+    "author_category": "local_business",
+    "published_at": "2026-07-03T14:16:06",
+    "caption": "Grabbed lunch near Königssee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_005",
+    "engagement_count": 213,
+    "estimated_reach": 10942,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0080",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_015",
+    "author_category": "tourist",
+    "published_at": "2026-05-27T04:28:07",
+    "caption": "Hiking trip to Walchensee was unforgettable.",
+    "hashtags": [
+      "walchensee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_015",
+    "engagement_count": 404,
+    "estimated_reach": 1419,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0020",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_032",
+    "author_category": "tourist",
+    "published_at": "2026-05-27T04:25:19",
+    "caption": "Beautiful morning at Eibsee! #alps",
+    "hashtags": [
+      "eibsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_032",
+    "engagement_count": 62,
+    "estimated_reach": 11994,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0011",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_054",
+    "author_category": "local_business",
+    "published_at": "2026-07-12T00:53:36",
+    "caption": "Beautiful morning at Garmisch-Partenkirchen! #alps",
+    "hashtags": [
+      "garmisch-partenkirchen"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_054",
+    "engagement_count": 122,
+    "estimated_reach": 1151,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0046",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_022",
+    "author_category": "tourist",
+    "published_at": "2026-06-28T10:21:20",
+    "caption": "Anyone else visiting Zugspitze this weekend?",
+    "hashtags": [
+      "zugspitze"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_022",
+    "engagement_count": 331,
+    "estimated_reach": 8683,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0016",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_025",
+    "author_category": "tourist",
+    "published_at": "2026-07-05T11:51:07",
+    "caption": "Cable car ride up to Garmisch-Partenkirchen was worth it.",
+    "hashtags": [
+      "garmisch-partenkirchen"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_025",
+    "engagement_count": 275,
+    "estimated_reach": 8338,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0039",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_009",
+    "author_category": "influencer",
+    "published_at": "2026-06-26T14:05:21",
+    "caption": "Family day out near Zugspitze.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_009",
+    "engagement_count": 484,
+    "estimated_reach": 2477,
+    "location_text": null,
+    "explicit_lat": 47.419844,
+    "explicit_lon": 10.996795,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0078",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_004",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-07T14:06:04",
+    "caption": "Family day out near Walchensee.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_004",
+    "engagement_count": 172,
+    "estimated_reach": 11159,
+    "location_text": null,
+    "explicit_lat": 47.580033,
+    "explicit_lon": 11.325507,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0002",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_002",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-05T05:17:27",
+    "caption": "Hiking trip to Garmisch-Partenkirchen was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_002",
+    "engagement_count": 116,
+    "estimated_reach": 7723,
+    "location_text": "Garmisch-Partenkirchen",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0008",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_006",
+    "author_category": "local_business",
+    "published_at": "2026-05-03T05:23:21",
+    "caption": "Garmisch-Partenkirchen views never disappoint.",
+    "hashtags": [
+      "garmisch-partenkirchen"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_006",
+    "engagement_count": 448,
+    "estimated_reach": 3409,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0032",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_031",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-23T01:45:59",
+    "caption": "Eibsee views never disappoint.",
+    "hashtags": [
+      "eibsee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_031",
+    "engagement_count": 447,
+    "estimated_reach": 13241,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0094",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_031",
+    "author_category": "influencer",
+    "published_at": "2026-06-26T19:28:15",
+    "caption": "Sunset over Herzogstand tonight.",
+    "hashtags": [
+      "herzogstand"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_031",
+    "engagement_count": 222,
+    "estimated_reach": 18135,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0029",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_004",
+    "author_category": "tourist",
+    "published_at": "2026-07-07T16:07:23",
+    "caption": "Grabbed lunch near Eibsee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_004",
+    "engagement_count": 377,
+    "estimated_reach": 11218,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0019",
+    "platform": "tiktok",
+    "author_name": "synthetic_influencer_010",
+    "author_category": "influencer",
+    "published_at": "2026-05-31T08:31:39",
+    "caption": "Sunset over Eibsee tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_010",
+    "engagement_count": 395,
+    "estimated_reach": 5393,
+    "location_text": "Eibsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0009",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_041",
+    "author_category": "influencer",
+    "published_at": "2026-07-03T10:52:44",
+    "caption": "Sunset over Garmisch-Partenkirchen tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_041",
+    "engagement_count": 348,
+    "estimated_reach": 8848,
+    "location_text": null,
+    "explicit_lat": 47.482583,
+    "explicit_lon": 11.091688,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0102",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_006",
+    "author_category": "local_business",
+    "published_at": "2026-05-08T08:46:29",
+    "caption": "Tegernsee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_006",
+    "engagement_count": 315,
+    "estimated_reach": 19633,
+    "location_text": null,
+    "explicit_lat": 47.706388,
+    "explicit_lon": 11.757147,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0018",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_001",
+    "author_category": "local_business",
+    "published_at": "2026-05-22T02:32:17",
+    "caption": "Family day out near Eibsee.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_001",
+    "engagement_count": 264,
+    "estimated_reach": 3586,
+    "location_text": null,
+    "explicit_lat": 47.476354,
+    "explicit_lon": 11.00568,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0089",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_049",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-14T12:58:29",
+    "caption": "Cable car ride up to Herzogstand was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_049",
+    "engagement_count": 296,
+    "estimated_reach": 12518,
+    "location_text": "Herzogstand",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0004",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_049",
+    "author_category": "influencer",
+    "published_at": "2026-05-29T14:32:39",
+    "caption": "Anyone else visiting Garmisch-Partenkirchen this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_049",
+    "engagement_count": 179,
+    "estimated_reach": 9205,
+    "location_text": "garmisch",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0049",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_058",
+    "author_category": "influencer",
+    "published_at": "2026-06-17T00:44:02",
+    "caption": "Beautiful morning at Zugspitze! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_058",
+    "engagement_count": 132,
+    "estimated_reach": 3468,
+    "location_text": null,
+    "explicit_lat": 47.431782,
+    "explicit_lon": 10.977364,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0103",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_029",
+    "author_category": "local_business",
+    "published_at": "2026-05-31T00:30:34",
+    "caption": "Cable car ride up to Tegernsee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_029",
+    "engagement_count": 157,
+    "estimated_reach": 19384,
+    "location_text": "Tegernsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0085",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_023",
+    "author_category": "tourist",
+    "published_at": "2026-07-14T03:31:48",
+    "caption": "Grabbed lunch near Walchensee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_023",
+    "engagement_count": 336,
+    "estimated_reach": 11281,
+    "location_text": null,
+    "explicit_lat": 47.587665,
+    "explicit_lon": 11.32165,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0047",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_036",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-22T20:15:23",
+    "caption": "Beautiful morning at Zugspitze! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_036",
+    "engagement_count": 43,
+    "estimated_reach": 4984,
+    "location_text": "zugspitz",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0025",
+    "platform": "tiktok",
+    "author_name": "synthetic_local_business_001",
+    "author_category": "local_business",
+    "published_at": "2026-06-16T00:30:24",
+    "caption": "Hiking trip to Eibsee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_001",
+    "engagement_count": 39,
+    "estimated_reach": 1129,
+    "location_text": null,
+    "explicit_lat": 47.469217,
+    "explicit_lon": 10.986678,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0007",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_037",
+    "author_category": "influencer",
+    "published_at": "2026-05-04T19:48:31",
+    "caption": "Garmisch-Partenkirchen views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_037",
+    "engagement_count": 365,
+    "estimated_reach": 2379,
+    "location_text": "Garmisch-Partenkirchen",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0090",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_055",
+    "author_category": "tourist",
+    "published_at": "2026-05-17T07:55:49",
+    "caption": "Sunset over Herzogstand tonight.",
+    "hashtags": [
+      "herzogstand"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_055",
+    "engagement_count": 98,
+    "estimated_reach": 16076,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0060",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_045",
+    "author_category": "influencer",
+    "published_at": "2026-07-04T19:48:44",
+    "caption": "Family day out near Berchtesgaden.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_045",
+    "engagement_count": 103,
+    "estimated_reach": 13877,
+    "location_text": "berchtesgaden nationalpark",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0070",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_018",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-10T07:21:29",
+    "caption": "Cable car ride up to Königssee was worth it.",
+    "hashtags": [
+      "koenigssee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_018",
+    "engagement_count": 44,
+    "estimated_reach": 9462,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0001",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_016",
+    "author_category": "tourist",
+    "published_at": "2026-05-06T09:42:36",
+    "caption": "Garmisch-Partenkirchen views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_016",
+    "engagement_count": 384,
+    "estimated_reach": 17970,
+    "location_text": null,
+    "explicit_lat": 47.481958,
+    "explicit_lon": 11.084857,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0066",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_015",
+    "author_category": "tourist",
+    "published_at": "2026-05-01T06:27:36",
+    "caption": "Anyone else visiting Königssee this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_015",
+    "engagement_count": 30,
+    "estimated_reach": 18365,
+    "location_text": "konigssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0083",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_020",
+    "author_category": "tourist",
+    "published_at": "2026-05-09T03:29:18",
+    "caption": "Hiking trip to Walchensee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_020",
+    "engagement_count": 299,
+    "estimated_reach": 12398,
+    "location_text": null,
+    "explicit_lat": 47.585427,
+    "explicit_lon": 11.344892,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0015",
+    "platform": "instagram",
+    "author_name": "synthetic_tourist_056",
+    "author_category": "tourist",
+    "published_at": "2026-07-08T22:59:15",
+    "caption": "Hiking trip to Garmisch-Partenkirchen was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_056",
+    "engagement_count": 83,
+    "estimated_reach": 5342,
+    "location_text": "Garmisch-Partenkirchen",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0091",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_022",
+    "author_category": "influencer",
+    "published_at": "2026-05-11T07:08:15",
+    "caption": "Family day out near Herzogstand.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_022",
+    "engagement_count": 289,
+    "estimated_reach": 432,
+    "location_text": "herzogstandbahn",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0033",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_001",
+    "author_category": "local_business",
+    "published_at": "2026-05-03T20:18:54",
+    "caption": "Grabbed lunch near Zugspitze, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_001",
+    "engagement_count": 237,
+    "estimated_reach": 9447,
+    "location_text": null,
+    "explicit_lat": 47.414654,
+    "explicit_lon": 10.992878,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0041",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_057",
+    "author_category": "influencer",
+    "published_at": "2026-06-21T10:19:23",
+    "caption": "Zugspitze views never disappoint.",
+    "hashtags": [
+      "zugspitze"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_057",
+    "engagement_count": 194,
+    "estimated_reach": 9438,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0096",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_048",
+    "author_category": "influencer",
+    "published_at": "2026-06-24T08:22:37",
+    "caption": "Anyone else visiting Herzogstand this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_048",
+    "engagement_count": 103,
+    "estimated_reach": 7190,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0059",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_047",
+    "author_category": "influencer",
+    "published_at": "2026-07-15T06:01:43",
+    "caption": "Family day out near Berchtesgaden.",
+    "hashtags": [
+      "berchtesgaden"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_047",
+    "engagement_count": 264,
+    "estimated_reach": 10234,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0005",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_007",
+    "author_category": "local_business",
+    "published_at": "2026-05-08T13:08:48",
+    "caption": "Hiking trip to Garmisch-Partenkirchen was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_007",
+    "engagement_count": 199,
+    "estimated_reach": 3269,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0071",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_021",
+    "author_category": "influencer",
+    "published_at": "2026-06-26T09:12:17",
+    "caption": "Hiking trip to Königssee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_021",
+    "engagement_count": 82,
+    "estimated_reach": 7677,
+    "location_text": "koenigssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0052",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_025",
+    "author_category": "local_business",
+    "published_at": "2026-05-13T22:51:04",
+    "caption": "Beautiful morning at Berchtesgaden! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_025",
+    "engagement_count": 444,
+    "estimated_reach": 15523,
+    "location_text": "Berchtesgaden",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0037",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_008",
+    "author_category": "local_business",
+    "published_at": "2026-05-04T07:10:48",
+    "caption": "Zugspitze views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_008",
+    "engagement_count": 301,
+    "estimated_reach": 19581,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0064",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_031",
+    "author_category": "tourist",
+    "published_at": "2026-05-02T04:27:27",
+    "caption": "Hiking trip to Königssee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_031",
+    "engagement_count": 238,
+    "estimated_reach": 13680,
+    "location_text": "Königssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0093",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_006",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-08T19:50:53",
+    "caption": "Family day out near Herzogstand.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_006",
+    "engagement_count": 118,
+    "estimated_reach": 13351,
+    "location_text": "Herzogstand",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0092",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_016",
+    "author_category": "local_business",
+    "published_at": "2026-07-10T01:54:51",
+    "caption": "Grabbed lunch near Herzogstand, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_016",
+    "engagement_count": 358,
+    "estimated_reach": 15700,
+    "location_text": null,
+    "explicit_lat": 47.616391,
+    "explicit_lon": 11.323677,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0021",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_016",
+    "author_category": "local_business",
+    "published_at": "2026-05-15T22:16:47",
+    "caption": "Hiking trip to Eibsee was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_016",
+    "engagement_count": 379,
+    "estimated_reach": 16024,
+    "location_text": "eib see",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0014",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_058",
+    "author_category": "influencer",
+    "published_at": "2026-07-11T03:57:14",
+    "caption": "Grabbed lunch near Garmisch-Partenkirchen, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_058",
+    "engagement_count": 75,
+    "estimated_reach": 16796,
+    "location_text": null,
+    "explicit_lat": 47.48797,
+    "explicit_lon": 11.109041,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0086",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_007",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-15T14:44:26",
+    "caption": "Grabbed lunch near Walchensee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_007",
+    "engagement_count": 496,
+    "estimated_reach": 11968,
+    "location_text": "Walchensee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0042",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_040",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-22T15:47:18",
+    "caption": "Beautiful morning at Zugspitze! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_040",
+    "engagement_count": 423,
+    "estimated_reach": 18273,
+    "location_text": "germanys highest peak",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0043",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_017",
+    "author_category": "tourist",
+    "published_at": "2026-06-29T12:48:05",
+    "caption": "Hiking trip to Zugspitze was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_017",
+    "engagement_count": 460,
+    "estimated_reach": 3607,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0053",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_023",
+    "author_category": "local_business",
+    "published_at": "2026-05-11T19:09:14",
+    "caption": "Family day out near Berchtesgaden.",
+    "hashtags": [
+      "berchtesgaden"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_023",
+    "engagement_count": 425,
+    "estimated_reach": 7557,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0045",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_058",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-09T12:50:39",
+    "caption": "Beautiful morning at Zugspitze! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_058",
+    "engagement_count": 52,
+    "estimated_reach": 13979,
+    "location_text": "Zugspitze",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0113",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_048",
+    "author_category": "tourist",
+    "published_at": "2026-06-30T15:31:54",
+    "caption": "Nice spot at the aussichtspunkt today.",
+    "hashtags": [],
+    "content_url": null,
+    "engagement_count": 82,
+    "estimated_reach": 612,
+    "location_text": "Aussichtspunkt",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "note": "intentionally unresolved location"
+    }
+  },
+  {
+    "external_id": "fixture-0012",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_005",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-30T07:31:45",
+    "caption": "Garmisch-Partenkirchen views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_005",
+    "engagement_count": 113,
+    "estimated_reach": 16458,
+    "location_text": "garmisch",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0063",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_006",
+    "author_category": "influencer",
+    "published_at": "2026-05-05T02:47:38",
+    "caption": "Königssee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_006",
+    "engagement_count": 106,
+    "estimated_reach": 4928,
+    "location_text": null,
+    "explicit_lat": 47.59137,
+    "explicit_lon": 12.968258,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0082",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_030",
+    "author_category": "tourist",
+    "published_at": "2026-05-23T23:44:19",
+    "caption": "Family day out near Walchensee.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_030",
+    "engagement_count": 397,
+    "estimated_reach": 12187,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0056",
+    "platform": "tiktok",
+    "author_name": "synthetic_influencer_038",
+    "author_category": "influencer",
+    "published_at": "2026-05-06T14:22:58",
+    "caption": "Family day out near Berchtesgaden.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_038",
+    "engagement_count": 181,
+    "estimated_reach": 10378,
+    "location_text": null,
+    "explicit_lat": 47.61782,
+    "explicit_lon": 13.00441,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0075",
+    "platform": "review_site",
+    "author_name": "synthetic_local_business_015",
+    "author_category": "local_business",
+    "published_at": "2026-07-05T08:11:42",
+    "caption": "Family day out near Königssee.",
+    "hashtags": [
+      "koenigssee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_015",
+    "engagement_count": 228,
+    "estimated_reach": 16013,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0024",
+    "platform": "instagram",
+    "author_name": "synthetic_tourism_board_016",
+    "author_category": "tourism_board",
+    "published_at": "2026-05-22T06:25:24",
+    "caption": "Eibsee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_016",
+    "engagement_count": 37,
+    "estimated_reach": 11178,
+    "location_text": "Eibsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0036",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_033",
+    "author_category": "local_business",
+    "published_at": "2026-05-25T09:51:47",
+    "caption": "Hiking trip to Zugspitze was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_033",
+    "engagement_count": 40,
+    "estimated_reach": 19598,
+    "location_text": "zugspitz",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0057",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_058",
+    "author_category": "tourist",
+    "published_at": "2026-07-06T04:26:08",
+    "caption": "Berchtesgaden views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_058",
+    "engagement_count": 5,
+    "estimated_reach": 17136,
+    "location_text": null,
+    "explicit_lat": 47.623671,
+    "explicit_lon": 13.007443,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0084",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_038",
+    "author_category": "local_business",
+    "published_at": "2026-05-20T06:08:09",
+    "caption": "Walchensee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_038",
+    "engagement_count": 57,
+    "estimated_reach": 9982,
+    "location_text": "Walchensee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0067",
+    "platform": "review_site",
+    "author_name": "synthetic_tourist_009",
+    "author_category": "tourist",
+    "published_at": "2026-05-13T02:20:13",
+    "caption": "Cable car ride up to Königssee was worth it.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_009",
+    "engagement_count": 346,
+    "estimated_reach": 17504,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0061",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_026",
+    "author_category": "local_business",
+    "published_at": "2026-07-03T09:44:10",
+    "caption": "Beautiful morning at Berchtesgaden! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_026",
+    "engagement_count": 160,
+    "estimated_reach": 9501,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0023",
+    "platform": "review_site",
+    "author_name": "synthetic_influencer_014",
+    "author_category": "influencer",
+    "published_at": "2026-05-09T00:23:12",
+    "caption": "Eibsee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_014",
+    "engagement_count": 348,
+    "estimated_reach": 12336,
+    "location_text": null,
+    "explicit_lat": 47.469355,
+    "explicit_lon": 10.99587,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0097",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_007",
+    "author_category": "influencer",
+    "published_at": "2026-05-24T12:07:56",
+    "caption": "Tegernsee views never disappoint.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_007",
+    "engagement_count": 159,
+    "estimated_reach": 563,
+    "location_text": null,
+    "explicit_lat": 47.711193,
+    "explicit_lon": 11.74624,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0004",
+    "platform": "instagram",
+    "author_name": "synthetic_influencer_049",
+    "author_category": "influencer",
+    "published_at": "2026-05-29T14:32:39",
+    "caption": "Anyone else visiting Garmisch-Partenkirchen this weekend?",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_049",
+    "engagement_count": 179,
+    "estimated_reach": 9205,
+    "location_text": "garmisch",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0006",
+    "platform": "facebook",
+    "author_name": "synthetic_influencer_052",
+    "author_category": "influencer",
+    "published_at": "2026-05-18T10:14:28",
+    "caption": "Beautiful morning at Garmisch-Partenkirchen! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_influencer_052",
+    "engagement_count": 477,
+    "estimated_reach": 12503,
+    "location_text": null,
+    "explicit_lat": 47.497909,
+    "explicit_lon": 11.096579,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0036",
+    "platform": "instagram",
+    "author_name": "synthetic_local_business_033",
+    "author_category": "local_business",
+    "published_at": "2026-05-25T09:51:47",
+    "caption": "Hiking trip to Zugspitze was unforgettable.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_033",
+    "engagement_count": 40,
+    "estimated_reach": 19598,
+    "location_text": "zugspitz",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0035",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_004",
+    "author_category": "tourist",
+    "published_at": "2026-05-29T02:47:38",
+    "caption": "Beautiful morning at Zugspitze! #alps",
+    "hashtags": [
+      "zugspitze"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_004",
+    "engagement_count": 304,
+    "estimated_reach": 15723,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0106",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_001",
+    "author_category": "tourist",
+    "published_at": "2026-07-11T19:07:03",
+    "caption": "Grabbed lunch near Tegernsee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_001",
+    "engagement_count": 154,
+    "estimated_reach": 1169,
+    "location_text": null,
+    "explicit_lat": 47.715362,
+    "explicit_lon": 11.752535,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0087",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourism_board_028",
+    "author_category": "tourism_board",
+    "published_at": "2026-07-15T20:30:37",
+    "caption": "Anyone else visiting Walchensee this weekend?",
+    "hashtags": [
+      "walchensee"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_028",
+    "engagement_count": 380,
+    "estimated_reach": 17196,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0098",
+    "platform": "facebook",
+    "author_name": "synthetic_local_business_003",
+    "author_category": "local_business",
+    "published_at": "2026-05-26T22:18:44",
+    "caption": "Beautiful morning at Tegernsee! #alps",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_local_business_003",
+    "engagement_count": 288,
+    "estimated_reach": 9672,
+    "location_text": "Tegernsee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0003",
+    "platform": "tiktok",
+    "author_name": "synthetic_tourist_046",
+    "author_category": "tourist",
+    "published_at": "2026-05-25T12:46:53",
+    "caption": "Grabbed lunch near Garmisch-Partenkirchen, highly recommend the area.",
+    "hashtags": [
+      "garmisch-partenkirchen"
+    ],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourist_046",
+    "engagement_count": 117,
+    "estimated_reach": 14819,
+    "location_text": null,
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0076",
+    "platform": "facebook",
+    "author_name": "synthetic_tourism_board_043",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-16T09:48:58",
+    "caption": "Grabbed lunch near Königssee, highly recommend the area.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_043",
+    "engagement_count": 435,
+    "estimated_reach": 15415,
+    "location_text": "koenigssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0074",
+    "platform": "review_site",
+    "author_name": "synthetic_tourism_board_001",
+    "author_category": "tourism_board",
+    "published_at": "2026-06-15T22:45:22",
+    "caption": "Sunset over Königssee tonight.",
+    "hashtags": [],
+    "content_url": "https://example-fixture.invalid/posts/synthetic_tourism_board_001",
+    "engagement_count": 157,
+    "estimated_reach": 12879,
+    "location_text": "Königssee",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "generator": "seed.generate_fixture"
+    }
+  },
+  {
+    "external_id": "fixture-0111",
+    "platform": "facebook",
+    "author_name": "synthetic_tourist_045",
+    "author_category": "tourist",
+    "published_at": "2026-07-04T12:57:23",
+    "caption": "Nice spot at the berghütte today.",
+    "hashtags": [],
+    "content_url": null,
+    "engagement_count": 39,
+    "estimated_reach": 1124,
+    "location_text": "Berghütte",
+    "explicit_lat": null,
+    "explicit_lon": null,
+    "raw_metadata": {
+      "synthetic": true,
+      "note": "intentionally unresolved location"
+    }
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [12.85, 47.50],
+            [13.10, 47.50],
+            [13.10, 47.70],
+            [12.85, 47.70],
+            [12.85, 47.50]
+          ]
+        ]
+      },
+      "properties": {
+        "label": "Berchtesgaden National Park (approximate, synthetic boundary)",
+        "value": 1,
+        "external_id": "protected-area-berchtesgaden",
+        "observed_at": "2026-01-01T00:00:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.95, 47.38],
+            [11.15, 47.38],
+            [11.15, 47.50],
+            [10.95, 47.50],
+            [10.95, 47.38]
+          ]
+        ]
+      },
+      "properties": {
+        "label": "Wetterstein Nature Reserve (approximate, synthetic boundary)",
+        "value": 1,
+        "external_id": "protected-area-wetterstein",
+        "observed_at": "2026-01-01T00:00:00"
+      }
+    }
+  ]
+}

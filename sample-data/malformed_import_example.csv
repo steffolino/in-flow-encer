@@ -1,0 +1,6 @@
+latitude,longitude,timestamp,value,label,external_id
+47.4210,10.9852,2026-06-20T09:00:00,850,Valid row,malformed-example-01
+not-a-number,10.9986,2026-06-20T09:00:00,410,Bad latitude,malformed-example-02
+47.5867,999,2026-06-20T09:00:00,700,Longitude out of range,malformed-example-03
+47.7167,11.7500,not-a-timestamp,300,Bad timestamp,malformed-example-04
+47.5833,11.3333,2026-06-20T09:00:00,not-a-number,Bad value,malformed-example-05

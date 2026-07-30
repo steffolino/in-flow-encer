@@ -1,0 +1,11 @@
+latitude,longitude,timestamp,value,label,external_id
+47.4210,10.9852,2026-06-20T09:00:00,850,Zugspitze summit counter,visitor-counter-zugspitze-01
+47.4210,10.9852,2026-06-27T09:00:00,1020,Zugspitze summit counter,visitor-counter-zugspitze-02
+47.4636,10.9986,2026-06-20T09:00:00,430,Eibsee lakeside counter,visitor-counter-eibsee-01
+47.4636,10.9986,2026-06-27T09:00:00,410,Eibsee lakeside counter,visitor-counter-eibsee-02
+47.5867,12.9757,2026-06-20T09:00:00,610,Königssee boat dock counter,visitor-counter-koenigssee-01
+47.5867,12.9757,2026-06-27T09:00:00,700,Königssee boat dock counter,visitor-counter-koenigssee-02
+47.7167,11.7500,2026-06-20T09:00:00,300,Tegernsee promenade counter,visitor-counter-tegernsee-01
+47.7167,11.7500,2026-06-27T09:00:00,180,Tegernsee promenade counter,visitor-counter-tegernsee-02
+47.5833,11.3333,2026-06-20T09:00:00,260,Walchensee shore counter,visitor-counter-walchensee-01
+47.5833,11.3333,2026-06-27T09:00:00,150,Walchensee shore counter,visitor-counter-walchensee-02

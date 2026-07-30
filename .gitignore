@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+dist/
+test-results/
+playwright-report/
+
+# Env
+.env
+
+# IDE
+.vscode/
+.idea/
