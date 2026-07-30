@@ -30,7 +30,7 @@ export function LayerControls({ overlays }: LayerControlsProps): React.JSX.Eleme
         <div className="layer-row-head">
           <span className="badge badge-observational">Social attention</span>
         </div>
-        <h3>Attention heatmap</h3>
+        <h3>Attention markers &amp; heatmap</h3>
         <VisibilityAndOpacity
           layerId={ATTENTION_HEATMAP_LAYER_ID}
           state={layers[ATTENTION_HEATMAP_LAYER_ID] ?? defaultLayerState()}
@@ -45,8 +45,11 @@ export function LayerControls({ overlays }: LayerControlsProps): React.JSX.Eleme
           ))}
         </ul>
         <p className="layer-meta">
-          Inferred from public social-media posts (synthetic/test data). Weighted by post count,
-          reach and engagement — never treat as confirmed visitor counts.
+          Each place is marked with a labeled, size/color-graduated circle (bigger and redder =
+          higher attention_score); the soft glow underneath is a secondary density cue. Click a
+          marker (or a row in the results table) to select and fly to that place. Inferred from
+          public social-media posts (synthetic/test data) — never treat as confirmed visitor
+          counts.
         </p>
       </div>
 

@@ -5,14 +5,24 @@ interface ResultsTableProps {
   cells: AttentionCell[]
   isLoading: boolean
   isError: boolean
+  selectedPlaceId: string | null
+  onSelectPlace: (placeId: string) => void
 }
 
 /**
  * The accessible, non-map alternative to the heatmap: every place currently
  * shown on the map, as a plain data table a screen-reader or keyboard-only
- * user can consume without ever touching the canvas.
+ * user can consume without ever touching the canvas. Selecting a row also
+ * flies the map to (and highlights) that place, so the table isn't just a
+ * read-only fallback — it drives the map the same way clicking a marker does.
  */
-export function ResultsTable({ cells, isLoading, isError }: ResultsTableProps): React.JSX.Element {
+export function ResultsTable({
+  cells,
+  isLoading,
+  isError,
+  selectedPlaceId,
+  onSelectPlace,
+}: ResultsTableProps): React.JSX.Element {
   return (
     <section className="panel" aria-labelledby="results-table-heading">
       <h2 id="results-table-heading">Places in view</h2>
@@ -43,17 +53,32 @@ export function ResultsTable({ cells, isLoading, isError }: ResultsTableProps): 
               </tr>
             </thead>
             <tbody>
-              {cells.map((cell) => (
-                <tr key={cell.place_id}>
-                  <th scope="row">{cell.place_name}</th>
-                  <td>{formatInteger(cell.post_count)}</td>
-                  <td>{formatCompactNumber(cell.total_reach)}</td>
-                  <td>{formatCompactNumber(cell.total_engagement)}</td>
-                  <td>{cell.attention_score.toFixed(2)}</td>
-                  <td>{formatPercentChange(cell.change_vs_previous_period)}</td>
-                  <td>{formatConfidence(cell.avg_confidence)}</td>
-                </tr>
-              ))}
+              {cells.map((cell) => {
+                const isSelected = cell.place_id === selectedPlaceId
+                return (
+                  <tr key={cell.place_id} aria-selected={isSelected} className={isSelected ? 'row-selected' : ''}>
+                    <th scope="row">
+                      <button
+                        type="button"
+                        className="link-button"
+                        aria-pressed={isSelected}
+                        onClick={() => {
+                          onSelectPlace(cell.place_id)
+                        }}
+                      >
+                        {cell.place_name}
+                        {isSelected ? ' (selected — see map)' : ''}
+                      </button>
+                    </th>
+                    <td>{formatInteger(cell.post_count)}</td>
+                    <td>{formatCompactNumber(cell.total_reach)}</td>
+                    <td>{formatCompactNumber(cell.total_engagement)}</td>
+                    <td>{cell.attention_score.toFixed(2)}</td>
+                    <td>{formatPercentChange(cell.change_vs_previous_period)}</td>
+                    <td>{formatConfidence(cell.avg_confidence)}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

@@ -6,6 +6,7 @@ import { attentionCellsToGeoJSON, socialContentToGeoJSON } from '../../lib/mapLa
 import type { AttentionCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
 import { ATTENTION_HEATMAP_LAYER_ID, SOCIAL_POINTS_LAYER_ID, type LayersState } from '../../state/layers'
 import { useAttentionHeatmapSync } from './useAttentionHeatmapSync'
+import { useAttentionMarkersSync } from './useAttentionMarkersSync'
 import { useSocialPointsSync } from './useSocialPointsSync'
 import { OverlayMapLayer } from './OverlayMapLayer'
 import { defaultLayerState } from '../../state/layers'
@@ -17,6 +18,8 @@ interface MapViewProps {
   places: Place[]
   overlays: OverlayLayer[]
   layers: LayersState
+  selectedPlaceId: string | null
+  onSelectPlace: (placeId: string) => void
 }
 
 export function MapView({
@@ -25,6 +28,8 @@ export function MapView({
   places,
   overlays,
   layers,
+  selectedPlaceId,
+  onSelectPlace,
 }: MapViewProps): React.JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
@@ -73,6 +78,16 @@ export function MapView({
     fittedTenantRef.current = activeSlug
   }, [map, activeSlug, attentionCells])
 
+  // Selecting a place (via a marker click or a results-table row) flies the
+  // map to it, so the table and the map drive each other instead of being
+  // two disconnected views of the same data.
+  useEffect(() => {
+    if (!map || !selectedPlaceId) return
+    const cell = attentionCells.find((c) => c.place_id === selectedPlaceId)
+    if (!cell) return
+    map.flyTo({ center: [cell.lon, cell.lat], zoom: Math.max(map.getZoom(), 11), duration: 600 })
+  }, [map, selectedPlaceId, attentionCells])
+
   const attentionData = attentionCellsToGeoJSON(attentionCells)
   const socialData = socialContentToGeoJSON(socialContentItems, places)
 
@@ -80,6 +95,13 @@ export function MapView({
     map,
     attentionData,
     layers[ATTENTION_HEATMAP_LAYER_ID] ?? defaultLayerState(),
+  )
+  useAttentionMarkersSync(
+    map,
+    attentionData,
+    layers[ATTENTION_HEATMAP_LAYER_ID] ?? defaultLayerState(),
+    selectedPlaceId,
+    onSelectPlace,
   )
   useSocialPointsSync(map, socialData, layers[SOCIAL_POINTS_LAYER_ID] ?? defaultLayerState())
 

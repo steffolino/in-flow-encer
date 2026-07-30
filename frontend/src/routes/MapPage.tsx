@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useAttention } from '../api/useAttention'
 import { useComparison } from '../api/useComparison'
 import { useOverlays } from '../api/useOverlays'
@@ -22,6 +23,7 @@ export function MapPage(): React.JSX.Element {
   const { filters } = useFilters()
   const { layers } = useLayers()
   const hasTenant = Boolean(activeSlug)
+  const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null)
 
   const attentionQuery = useAttention(filters, hasTenant)
   const comparisonQuery = useComparison(filters, hasTenant)
@@ -64,12 +66,16 @@ export function MapPage(): React.JSX.Element {
             places={places}
             overlays={overlays}
             layers={layers}
+            selectedPlaceId={selectedPlaceId}
+            onSelectPlace={setSelectedPlaceId}
           />
           <SummaryStrip summary={summary} />
           <ResultsTable
             cells={cells}
             isLoading={hasTenant && attentionQuery.isLoading}
             isError={hasTenant && attentionQuery.isError}
+            selectedPlaceId={selectedPlaceId}
+            onSelectPlace={setSelectedPlaceId}
           />
         </div>
 

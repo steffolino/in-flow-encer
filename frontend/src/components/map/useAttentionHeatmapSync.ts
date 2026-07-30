@@ -29,11 +29,14 @@ export function useAttentionHeatmapSync(
         type: 'heatmap',
         source: SOURCE_ID,
         paint: {
-          'heatmap-weight': ['coalesce', ['get', 'attention_score'], 0],
-          'heatmap-intensity': 1.2,
-          'heatmap-radius': 32,
+          // Boosted (x3) so a handful of sparse places still register instead
+          // of washing out — see lib/colors.ts for why this is a secondary
+          // "glow" layer, not the primary readable signal.
+          'heatmap-weight': ['coalesce', ['*', ['get', 'attention_score'], 3], 0],
+          'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 6, 1.5, 14, 3.5],
+          'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 6, 25, 14, 70],
           'heatmap-color': ATTENTION_HEATMAP_COLOR_EXPRESSION,
-          'heatmap-opacity': layerState.opacity,
+          'heatmap-opacity': layerState.opacity * 0.7,
         },
         layout: {
           visibility: layerState.visible ? 'visible' : 'none',
@@ -52,7 +55,7 @@ export function useAttentionHeatmapSync(
 
   useEffect(() => {
     if (!map?.getLayer(LAYER_ID)) return
-    map.setPaintProperty(LAYER_ID, 'heatmap-opacity', layerState.opacity)
+    map.setPaintProperty(LAYER_ID, 'heatmap-opacity', layerState.opacity * 0.7)
     map.setLayoutProperty(LAYER_ID, 'visibility', layerState.visible ? 'visible' : 'none')
   }, [map, layerState.opacity, layerState.visible])
 
