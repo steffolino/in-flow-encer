@@ -66,18 +66,21 @@ a {
 }
 
 .app-intro {
-  margin: 0;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
+  padding: 0.75rem 1.25rem;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
-  max-width: 70ch;
 }
 
-.app-intro-usage {
-  padding-top: 0;
-  font-weight: 600;
+.app-intro h2 {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+}
+
+.app-intro p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  max-width: 70ch;
 }
 
 .synthetic-data-banner {
