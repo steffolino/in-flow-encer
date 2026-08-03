@@ -93,7 +93,7 @@ a {
 .app-main {
   position: relative;
   flex: 1;
-  min-height: 0;
+  min-height: 500px;
   overflow: hidden;
   padding: 0.75rem;
 }
