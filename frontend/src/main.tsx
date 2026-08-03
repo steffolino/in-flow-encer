@@ -7,6 +7,7 @@ import App from './App.tsx'
 import { TenantProvider } from './state/TenantProvider.tsx'
 import { FiltersProvider } from './state/FiltersProvider.tsx'
 import { LayersProvider } from './state/LayersProvider.tsx'
+import { UIProvider } from './state/UIProvider.tsx'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,9 +29,11 @@ createRoot(rootElement).render(
       <TenantProvider>
         <FiltersProvider>
           <LayersProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <UIProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </UIProvider>
           </LayersProvider>
         </FiltersProvider>
       </TenantProvider>

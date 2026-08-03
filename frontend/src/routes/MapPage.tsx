@@ -5,15 +5,10 @@ import { useOverlays } from '../api/useOverlays'
 import { usePlaces } from '../api/usePlaces'
 import { useSocialContent } from '../api/useSocialContent'
 import { Header } from '../components/layout/Header'
-import { FilterPanel } from '../components/filters/FilterPanel'
-import { LayerControls } from '../components/layers/LayerControls'
-import { MapView } from '../components/map/MapView'
-import { ComparisonPanel } from '../components/summary/ComparisonPanel'
-import { ResultsTable } from '../components/summary/ResultsTable'
-import { SummaryStrip } from '../components/summary/SummaryStrip'
-import { OverlayUpload } from '../components/import/OverlayUpload'
-import { SocialContentImport } from '../components/import/SocialContentImport'
+import { DesktopLayout } from '../components/layout/DesktopLayout'
+import { MobileLayout } from '../components/layout/MobileLayout'
 import { computeDashboardSummary } from '../lib/summary'
+import { useIsDesktop } from '../lib/useIsDesktop'
 import { useFilters } from '../state/filters'
 import { useLayers } from '../state/layers'
 import { useTenant } from '../state/tenant'
@@ -22,6 +17,7 @@ export function MapPage(): React.JSX.Element {
   const { activeSlug } = useTenant()
   const { filters } = useFilters()
   const { layers } = useLayers()
+  const isDesktop = useIsDesktop()
   const hasTenant = Boolean(activeSlug)
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null)
 
@@ -50,6 +46,22 @@ export function MapPage(): React.JSX.Element {
     layers,
   )
 
+  const layoutProps = {
+    cells,
+    socialItems,
+    places,
+    overlays,
+    layers,
+    selectedPlaceId,
+    onSelectPlace: setSelectedPlaceId,
+    summary,
+    comparisonItems,
+    isTableLoading: hasTenant && attentionQuery.isLoading,
+    isTableError: hasTenant && attentionQuery.isError,
+    isComparisonLoading: hasTenant && comparisonQuery.isLoading,
+    isComparisonError: hasTenant && comparisonQuery.isError,
+  }
+
   return (
     <div className="app-shell">
       <Header />
@@ -60,40 +72,7 @@ export function MapPage(): React.JSX.Element {
         </p>
       )}
       <main className="app-main">
-        <div className="sidebar-left">
-          <FilterPanel />
-          <LayerControls overlays={overlays} />
-        </div>
-
-        <div className="map-column">
-          <MapView
-            attentionCells={cells}
-            socialContentItems={socialItems}
-            places={places}
-            overlays={overlays}
-            layers={layers}
-            selectedPlaceId={selectedPlaceId}
-            onSelectPlace={setSelectedPlaceId}
-          />
-          <SummaryStrip summary={summary} />
-          <ResultsTable
-            cells={cells}
-            isLoading={hasTenant && attentionQuery.isLoading}
-            isError={hasTenant && attentionQuery.isError}
-            selectedPlaceId={selectedPlaceId}
-            onSelectPlace={setSelectedPlaceId}
-          />
-        </div>
-
-        <div className="sidebar-right">
-          <ComparisonPanel
-            items={comparisonItems}
-            isLoading={hasTenant && comparisonQuery.isLoading}
-            isError={hasTenant && comparisonQuery.isError}
-          />
-          <SocialContentImport />
-          <OverlayUpload />
-        </div>
+        {isDesktop ? <DesktopLayout {...layoutProps} /> : <MobileLayout {...layoutProps} />}
       </main>
     </div>
   )
