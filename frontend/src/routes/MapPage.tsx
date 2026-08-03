@@ -5,6 +5,7 @@ import { useOverlays } from '../api/useOverlays'
 import { usePlaces } from '../api/usePlaces'
 import { useSocialContent } from '../api/useSocialContent'
 import { Header } from '../components/layout/Header'
+import { Footer } from '../components/layout/Footer'
 import { DesktopLayout } from '../components/layout/DesktopLayout'
 import { MobileLayout } from '../components/layout/MobileLayout'
 import { MapView } from '../components/map/MapView'
@@ -85,6 +86,7 @@ export function MapPage(): React.JSX.Element {
         </div>
         {isDesktop ? <DesktopLayout {...chromeProps} /> : <MobileLayout {...chromeProps} />}
       </main>
+      <Footer />
     </div>
   )
 }
