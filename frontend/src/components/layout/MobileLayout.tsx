@@ -1,23 +1,17 @@
 import { FilterPanel } from '../filters/FilterPanel'
 import { LayerControls } from '../layers/LayerControls'
-import { MapView } from '../map/MapView'
 import { ComparisonPanel } from '../summary/ComparisonPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
 import { useUI, type MobileSheetId } from '../../state/ui'
 import { MobileSheet } from './MobileSheet'
-import type { AttentionCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
-import type { ComparisonItem } from '../../api/schemas'
-import type { LayersState } from '../../state/layers'
+import type { AttentionCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
 import type { DashboardSummary } from '../../lib/summary'
 
 interface MobileLayoutProps {
   cells: AttentionCell[]
-  socialItems: SocialContentItem[]
-  places: Place[]
   overlays: OverlayLayer[]
-  layers: LayersState
   selectedPlaceId: string | null
   onSelectPlace: (placeId: string) => void
   summary: DashboardSummary
@@ -46,10 +40,7 @@ const SHEET_TITLES: Record<MobileSheetId, string> = {
 
 export function MobileLayout({
   cells,
-  socialItems,
-  places,
   overlays,
-  layers,
   selectedPlaceId,
   onSelectPlace,
   summary,
@@ -66,19 +57,7 @@ export function MobileLayout({
   const closeSheet = () => { dispatch({ type: 'CLOSE_MOBILE_SHEET' }); }
 
   return (
-    <div className="mobile-shell">
-      <div className="mobile-map-layer">
-        <MapView
-          attentionCells={cells}
-          socialContentItems={socialItems}
-          places={places}
-          overlays={overlays}
-          layers={layers}
-          selectedPlaceId={selectedPlaceId}
-          onSelectPlace={onSelectPlace}
-        />
-      </div>
-
+    <>
       <div className="mobile-overview-chip">
         <span>
           <strong>{summary.postsInPeriod}</strong> posts
@@ -144,6 +123,6 @@ export function MobileLayout({
           <OverlayUpload />
         </MobileSheet>
       )}
-    </div>
+    </>
   )
 }

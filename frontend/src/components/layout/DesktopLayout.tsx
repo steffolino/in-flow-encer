@@ -1,23 +1,17 @@
 import { FilterPanel } from '../filters/FilterPanel'
 import { LayerControls } from '../layers/LayerControls'
-import { MapView } from '../map/MapView'
 import { ComparisonPanel } from '../summary/ComparisonPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
 import { useUI, type PanelId } from '../../state/ui'
 import { FloatingPanel } from './FloatingPanel'
-import type { AttentionCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
-import type { ComparisonItem } from '../../api/schemas'
-import type { LayersState } from '../../state/layers'
+import type { AttentionCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
 import type { DashboardSummary } from '../../lib/summary'
 
 interface DesktopLayoutProps {
   cells: AttentionCell[]
-  socialItems: SocialContentItem[]
-  places: Place[]
   overlays: OverlayLayer[]
-  layers: LayersState
   selectedPlaceId: string | null
   onSelectPlace: (placeId: string) => void
   summary: DashboardSummary
@@ -37,10 +31,7 @@ const PANEL_LABELS: Record<PanelId, string> = {
 
 export function DesktopLayout({
   cells,
-  socialItems,
-  places,
   overlays,
-  layers,
   selectedPlaceId,
   onSelectPlace,
   summary,
@@ -56,19 +47,7 @@ export function DesktopLayout({
   const closePanel = () => { dispatch({ type: 'CLOSE_DESKTOP_PANEL' }); }
 
   return (
-    <div className="hud-shell">
-      <div className="hud-map-layer">
-        <MapView
-          attentionCells={cells}
-          socialContentItems={socialItems}
-          places={places}
-          overlays={overlays}
-          layers={layers}
-          selectedPlaceId={selectedPlaceId}
-          onSelectPlace={onSelectPlace}
-        />
-      </div>
-
+    <>
       <div className="hud-top-bar">
         <div className="hud-top-bar-group">
           <button
@@ -164,6 +143,6 @@ export function DesktopLayout({
           </div>
         )}
       </div>
-    </div>
+    </>
   )
 }

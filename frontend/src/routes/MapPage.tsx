@@ -7,6 +7,7 @@ import { useSocialContent } from '../api/useSocialContent'
 import { Header } from '../components/layout/Header'
 import { DesktopLayout } from '../components/layout/DesktopLayout'
 import { MobileLayout } from '../components/layout/MobileLayout'
+import { MapView } from '../components/map/MapView'
 import { computeDashboardSummary } from '../lib/summary'
 import { useIsDesktop } from '../lib/useIsDesktop'
 import { useFilters } from '../state/filters'
@@ -46,12 +47,9 @@ export function MapPage(): React.JSX.Element {
     layers,
   )
 
-  const layoutProps = {
+  const chromeProps = {
     cells,
-    socialItems,
-    places,
     overlays,
-    layers,
     selectedPlaceId,
     onSelectPlace: setSelectedPlaceId,
     summary,
@@ -72,7 +70,20 @@ export function MapPage(): React.JSX.Element {
         </p>
       )}
       <main className="app-main">
-        {isDesktop ? <DesktopLayout {...layoutProps} /> : <MobileLayout {...layoutProps} />}
+        {/* Mounted once regardless of layout, so switching between desktop/mobile
+            at the breakpoint doesn't tear down and recreate the MapLibre instance. */}
+        <div className="map-layer">
+          <MapView
+            attentionCells={cells}
+            socialContentItems={socialItems}
+            places={places}
+            overlays={overlays}
+            layers={layers}
+            selectedPlaceId={selectedPlaceId}
+            onSelectPlace={setSelectedPlaceId}
+          />
+        </div>
+        {isDesktop ? <DesktopLayout {...chromeProps} /> : <MobileLayout {...chromeProps} />}
       </main>
     </div>
   )
