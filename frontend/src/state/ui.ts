@@ -1,7 +1,7 @@
 import { createContext, useContext, type Dispatch } from 'react'
 
 /** Panels that can be surfaced in either the desktop HUD or the mobile menu sheet. */
-export type PanelId = 'filters' | 'layers' | 'comparison' | 'import'
+export type PanelId = 'filters' | 'layers' | 'forecast' | 'comparison' | 'import'
 
 /** Mobile's menu additionally drills into the places table, which desktop keeps as its own drawer. */
 export type MobileSheetId = PanelId | 'table'

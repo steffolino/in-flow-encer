@@ -1,5 +1,6 @@
 import {
   ATTENTION_LEGEND_STOPS,
+  FORECAST_LEGEND_STOPS,
   OVERLAY_GEOMETRY_COLORS,
   OVERLAY_GEOMETRY_LABELS,
   SOCIAL_POINT_COLOR,
@@ -8,6 +9,7 @@ import { formatDateTime } from '../../lib/format'
 import { usePatchOverlay } from '../../api/useOverlayMutations'
 import {
   ATTENTION_HEATMAP_LAYER_ID,
+  FORECAST_LAYER_ID,
   SOCIAL_POINTS_LAYER_ID,
   defaultLayerState,
   useLayers,
@@ -71,6 +73,31 @@ export function LayerControls({ overlays }: LayerControlsProps): React.JSX.Eleme
         </ul>
         <p className="layer-meta">
           Optional detail view. Posts without a location match are not plotted.
+        </p>
+      </div>
+
+      <div className="layer-row">
+        <div className="layer-row-head">
+          <span className="badge badge-forecast">Forecast (projected)</span>
+        </div>
+        <h3>Next-period attention forecast</h3>
+        <VisibilityAndOpacity
+          layerId={FORECAST_LAYER_ID}
+          state={layers[FORECAST_LAYER_ID] ?? defaultLayerState()}
+          dispatch={dispatch}
+        />
+        <ul className="legend-list" aria-label="Forecast legend">
+          {FORECAST_LEGEND_STOPS.map((stop) => (
+            <li key={stop.label} className="legend-item">
+              <span className="legend-swatch" style={{ background: stop.color }} aria-hidden="true" />
+              {stop.label}
+            </li>
+          ))}
+        </ul>
+        <p className="layer-meta">
+          A simple trend projection (no machine learning) — see the Forecast panel and the About
+          page for the exact formula, confidence bands, and which signals are and aren't included.
+          Never treat as a guaranteed outcome.
         </p>
       </div>
 
@@ -139,18 +166,22 @@ function VisibilityAndOpacity({
   const opacityId = `layer-opacity-${layerId}`
   return (
     <>
-      <div className="field" style={{ flexDirection: 'row', alignItems: 'center', gap: '0.4rem' }}>
-        <input
-          id={visibilityId}
-          type="checkbox"
-          checked={state.visible}
-          onChange={(event) => {
-            dispatch({ type: 'SET_VISIBLE', layerId, visible: event.target.checked })
-            onVisibleChange?.(event.target.checked)
-          }}
-        />
-        <label htmlFor={visibilityId} style={{ margin: 0 }}>
-          {state.visible ? 'Visible' : 'Hidden'}
+      <div className="field">
+        <label className="toggle-switch" htmlFor={visibilityId}>
+          <input
+            id={visibilityId}
+            type="checkbox"
+            className="toggle-input"
+            checked={state.visible}
+            onChange={(event) => {
+              dispatch({ type: 'SET_VISIBLE', layerId, visible: event.target.checked })
+              onVisibleChange?.(event.target.checked)
+            }}
+          />
+          <span className="toggle-track" aria-hidden="true">
+            <span className="toggle-thumb" />
+          </span>
+          <span className="toggle-label-text">{state.visible ? 'On' : 'Off'}</span>
         </label>
       </div>
       <div className="field">

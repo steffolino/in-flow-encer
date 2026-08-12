@@ -21,6 +21,17 @@ export function formatPercentChange(value: number | null | undefined): string {
   return `${sign}${(value * 100).toFixed(0)}%`
 }
 
+/**
+ * Formats a value that is already a percentage (e.g. the backend's
+ * ForecastCell.trend_pct, which is `((current - previous) / previous) *
+ * 100`) — unlike formatPercentChange, which expects a 0..1 fraction.
+ */
+export function formatSignedPercent(value: number | null | undefined): string {
+  if (value === null || value === undefined) return 'no prior period to compare'
+  const sign = value > 0 ? '+' : ''
+  return `${sign}${value.toFixed(1)}%`
+}
+
 export function formatConfidence(value: number | null | undefined): string {
   if (value === null || value === undefined) return 'unknown confidence'
   return `${(value * 100).toFixed(0)}% confidence`

@@ -1,5 +1,5 @@
 import { createContext, useContext, type Dispatch } from 'react'
-import { defaultDateRange } from '../lib/dateRange'
+import { pilotWindowMonths } from '../lib/dateRange'
 
 /**
  * Explicit client-side filter state. This is deliberately NOT server state:
@@ -17,10 +17,13 @@ export interface Filters {
 }
 
 export function initialFilters(): Filters {
-  const { from, to } = defaultDateRange()
+  // Defaults to the full pilot-region demo window (see pilotWindowMonths)
+  // rather than "trailing 30 days from today," since the seeded sample
+  // data is fixed to specific 2026 dates, not relative to the current date.
+  const months = pilotWindowMonths()
   return {
-    dateFrom: from,
-    dateTo: to,
+    dateFrom: months[0]?.from ?? '',
+    dateTo: months[months.length - 1]?.to ?? '',
     platform: '',
     region: '',
     sourceId: '',

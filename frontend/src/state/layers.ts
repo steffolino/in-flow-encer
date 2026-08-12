@@ -3,6 +3,7 @@ import { createContext, useContext, type Dispatch } from 'react'
 /** Fixed ids for the two built-in social-attention layers. Overlay layers use their own backend id. */
 export const ATTENTION_HEATMAP_LAYER_ID = 'social-attention-heatmap'
 export const SOCIAL_POINTS_LAYER_ID = 'social-content-points'
+export const FORECAST_LAYER_ID = 'attention-forecast'
 
 export interface LayerState {
   visible: boolean
@@ -19,6 +20,7 @@ export function initialLayersState(): LayersState {
   return {
     [ATTENTION_HEATMAP_LAYER_ID]: { visible: true, opacity: 0.85 },
     [SOCIAL_POINTS_LAYER_ID]: { visible: false, opacity: 1 },
+    [FORECAST_LAYER_ID]: { visible: false, opacity: 0.85 },
   }
 }
 

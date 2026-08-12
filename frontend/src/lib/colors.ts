@@ -79,6 +79,35 @@ export const ATTENTION_LEGEND_STOPS: LegendStop[] = [
 
 export const SOCIAL_POINT_COLOR = '#b91c1c'
 
+/**
+ * Forecast markers are a *projection*, not an observation or an uploaded
+ * overlay, so they need a third color family distinct from both the warm
+ * attention ramp AND the overlay colors above (which already span
+ * cyan/indigo/purple). Green is the one family neither of those uses, plus
+ * a lower fill opacity and a "~"-prefixed label (see
+ * useForecastMarkersSync.ts) as non-color-only cues.
+ */
+export const FORECAST_MARKER_COLOR_EXPRESSION: ExpressionSpecification = [
+  'interpolate',
+  ['linear'],
+  ['coalesce', ['get', 'forecast_score'], 0],
+  0,
+  '#d1fae5',
+  0.4,
+  '#34d399',
+  0.7,
+  '#059669',
+  1,
+  '#065f46',
+]
+
+export const FORECAST_LEGEND_STOPS: LegendStop[] = [
+  { color: '#d1fae5', label: 'Low projected attention' },
+  { color: '#34d399', label: 'Moderate projected attention' },
+  { color: '#059669', label: 'High projected attention' },
+  { color: '#065f46', label: 'Very high projected attention' },
+]
+
 /** Cool, geometry-specific colors for customer-supplied overlay layers. */
 export const OVERLAY_GEOMETRY_COLORS: Record<OverlayGeometryType, string> = {
   Point: '#0e7490',

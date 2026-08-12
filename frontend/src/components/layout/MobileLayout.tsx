@@ -1,12 +1,14 @@
 import { FilterPanel } from '../filters/FilterPanel'
+import { TimeRangeSlider } from '../filters/TimeRangeSlider'
 import { LayerControls } from '../layers/LayerControls'
 import { ComparisonPanel } from '../summary/ComparisonPanel'
+import { ForecastPanel } from '../summary/ForecastPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
 import { useUI, type MobileSheetId } from '../../state/ui'
 import { MobileSheet } from './MobileSheet'
-import type { AttentionCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
+import type { AttentionCell, ForecastCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
 import type { DashboardSummary } from '../../lib/summary'
 
 interface MobileLayoutProps {
@@ -16,16 +18,21 @@ interface MobileLayoutProps {
   onSelectPlace: (placeId: string) => void
   summary: DashboardSummary
   comparisonItems: ComparisonItem[]
+  forecastCells: ForecastCell[]
+  forecastNotYetConnected: string[]
   isTableLoading: boolean
   isTableError: boolean
   isComparisonLoading: boolean
   isComparisonError: boolean
+  isForecastLoading: boolean
+  isForecastError: boolean
 }
 
 const MENU_ITEMS: { id: MobileSheetId; label: string }[] = [
   { id: 'filters', label: 'Filters' },
   { id: 'layers', label: 'Map layers' },
   { id: 'table', label: 'Places table' },
+  { id: 'forecast', label: 'Forecast & drivers' },
   { id: 'comparison', label: 'Compare to visitor flow' },
   { id: 'import', label: 'Import data' },
 ]
@@ -34,6 +41,7 @@ const SHEET_TITLES: Record<MobileSheetId, string> = {
   filters: 'Filters',
   layers: 'Map layers',
   table: 'Places table',
+  forecast: 'Forecast & drivers',
   comparison: 'Compare to visitor flow',
   import: 'Import data',
 }
@@ -45,10 +53,14 @@ export function MobileLayout({
   onSelectPlace,
   summary,
   comparisonItems,
+  forecastCells,
+  forecastNotYetConnected,
   isTableLoading,
   isTableError,
   isComparisonLoading,
   isComparisonError,
+  isForecastLoading,
+  isForecastError,
 }: MobileLayoutProps): React.JSX.Element {
   const { ui, dispatch } = useUI()
 
@@ -58,13 +70,16 @@ export function MobileLayout({
 
   return (
     <>
-      <div className="mobile-overview-chip">
-        <span>
-          <strong>{summary.postsInPeriod}</strong> posts
-        </span>
-        <span>
-          <strong>{summary.placesMentioned}</strong> places
-        </span>
+      <div className="mobile-toolbar">
+        <div className="mobile-overview-chip">
+          <span>
+            <strong>{summary.postsInPeriod}</strong> posts
+          </span>
+          <span>
+            <strong>{summary.placesMentioned}</strong> places
+          </span>
+        </div>
+        <TimeRangeSlider />
       </div>
 
       <button type="button" className="mobile-menu-btn" onClick={openMenu}>
@@ -105,6 +120,16 @@ export function MobileLayout({
             isError={isTableError}
             selectedPlaceId={selectedPlaceId}
             onSelectPlace={onSelectPlace}
+          />
+        </MobileSheet>
+      )}
+      {ui.mobileSheet === 'forecast' && (
+        <MobileSheet title={SHEET_TITLES.forecast} onClose={closeSheet} onBack={openMenu}>
+          <ForecastPanel
+            cells={forecastCells}
+            notYetConnected={forecastNotYetConnected}
+            isLoading={isForecastLoading}
+            isError={isForecastError}
           />
         </MobileSheet>
       )}

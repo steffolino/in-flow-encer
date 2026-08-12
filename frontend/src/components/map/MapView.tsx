@@ -2,11 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { BASEMAP_STYLE, BAVARIAN_ALPS_CENTER, DEFAULT_ZOOM } from '../../lib/mapStyle'
-import { attentionCellsToGeoJSON, socialContentToGeoJSON } from '../../lib/mapLayers'
-import type { AttentionCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
-import { ATTENTION_HEATMAP_LAYER_ID, SOCIAL_POINTS_LAYER_ID, type LayersState } from '../../state/layers'
+import { attentionCellsToGeoJSON, forecastCellsToGeoJSON, socialContentToGeoJSON } from '../../lib/mapLayers'
+import type { AttentionCell, ForecastCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
+import {
+  ATTENTION_HEATMAP_LAYER_ID,
+  FORECAST_LAYER_ID,
+  SOCIAL_POINTS_LAYER_ID,
+  type LayersState,
+} from '../../state/layers'
 import { useAttentionHeatmapSync } from './useAttentionHeatmapSync'
 import { useAttentionMarkersSync } from './useAttentionMarkersSync'
+import { useForecastMarkersSync } from './useForecastMarkersSync'
 import { useSocialPointsSync } from './useSocialPointsSync'
 import { OverlayMapLayer } from './OverlayMapLayer'
 import { defaultLayerState } from '../../state/layers'
@@ -14,6 +20,7 @@ import { useTenant } from '../../state/tenant'
 
 interface MapViewProps {
   attentionCells: AttentionCell[]
+  forecastCells: ForecastCell[]
   socialContentItems: SocialContentItem[]
   places: Place[]
   overlays: OverlayLayer[]
@@ -24,6 +31,7 @@ interface MapViewProps {
 
 export function MapView({
   attentionCells,
+  forecastCells,
   socialContentItems,
   places,
   overlays,
@@ -36,30 +44,6 @@ export function MapView({
   const [map, setMap] = useState<MapLibreMap | null>(null)
   const { activeSlug } = useTenant()
   const fittedTenantRef = useRef<string | null>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const instance = new maplibregl.Map({
-      container: containerRef.current,
-      style: BASEMAP_STYLE,
-      center: BAVARIAN_ALPS_CENTER,
-      zoom: DEFAULT_ZOOM,
-      attributionControl: false,
-    })
-    instance.addControl(new maplibregl.NavigationControl(), 'top-right')
-    instance.addControl(new maplibregl.AttributionControl({ compact: true }))
-    mapRef.current = instance
-    instance.on('load', () => {
-      setMap(instance)
-    })
-
-    return () => {
-      instance.remove()
-      mapRef.current = null
-      setMap(null)
-    }
-  }, [])
 
   // Fly to the active tenant's own places once its data has loaded, instead
   // of always showing the fixed Bavarian Alps overview. Runs once per tenant
@@ -89,6 +73,7 @@ export function MapView({
   }, [map, selectedPlaceId, attentionCells])
 
   const attentionData = attentionCellsToGeoJSON(attentionCells)
+  const forecastData = forecastCellsToGeoJSON(forecastCells)
   const socialData = socialContentToGeoJSON(socialContentItems, places)
 
   useAttentionHeatmapSync(
@@ -103,7 +88,40 @@ export function MapView({
     selectedPlaceId,
     onSelectPlace,
   )
+  useForecastMarkersSync(map, forecastData, layers[FORECAST_LAYER_ID] ?? defaultLayerState())
   useSocialPointsSync(map, socialData, layers[SOCIAL_POINTS_LAYER_ID] ?? defaultLayerState())
+
+  // Declared last (not first) on purpose: React unmounts effects for a given
+  // component in the order they were set up, so this must be the LAST effect
+  // to have a cleanup function here. Each use*Sync hook above registers its
+  // own layer-removal cleanup; if this map-teardown effect ran first (as it
+  // did when declared at the top of the component), instance.remove() would
+  // destroy the map before those hooks' cleanups call map.getLayer/removeLayer
+  // on it, throwing "Cannot read properties of undefined" on every route
+  // change away from the map (see the About-page navigation bug).
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const instance = new maplibregl.Map({
+      container: containerRef.current,
+      style: BASEMAP_STYLE,
+      center: BAVARIAN_ALPS_CENTER,
+      zoom: DEFAULT_ZOOM,
+      attributionControl: false,
+    })
+    instance.addControl(new maplibregl.NavigationControl(), 'top-right')
+    instance.addControl(new maplibregl.AttributionControl({ compact: true }))
+    mapRef.current = instance
+    instance.on('load', () => {
+      setMap(instance)
+    })
+
+    return () => {
+      instance.remove()
+      mapRef.current = null
+      setMap(null)
+    }
+  }, [])
 
   return (
     <div

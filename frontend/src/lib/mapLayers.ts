@@ -1,5 +1,5 @@
 import type { Feature, FeatureCollection, Point } from 'geojson'
-import type { AttentionCell, Place, SocialContentItem } from '../api/schemas'
+import type { AttentionCell, ForecastCell, Place, SocialContentItem } from '../api/schemas'
 
 export interface AttentionPointProperties {
   place_id: string
@@ -26,6 +26,34 @@ export function attentionCellsToGeoJSON(
       total_reach: cell.total_reach,
       total_engagement: cell.total_engagement,
       unique_creators: cell.unique_creators,
+    },
+  }))
+  return { type: 'FeatureCollection', features }
+}
+
+export interface ForecastPointProperties {
+  place_id: string
+  place_name: string
+  forecast_score: number
+  attention_score: number
+  trend_pct: number | null
+  confidence: string
+}
+
+/** Builds the point FeatureCollection the forecast layer sources from. */
+export function forecastCellsToGeoJSON(
+  cells: ForecastCell[],
+): FeatureCollection<Point, ForecastPointProperties> {
+  const features: Feature<Point, ForecastPointProperties>[] = cells.map((cell) => ({
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: [cell.lon, cell.lat] },
+    properties: {
+      place_id: cell.place_id,
+      place_name: cell.place_name,
+      forecast_score: cell.forecast_score,
+      attention_score: cell.attention_score,
+      trend_pct: cell.trend_pct ?? null,
+      confidence: cell.confidence,
     },
   }))
   return { type: 'FeatureCollection', features }

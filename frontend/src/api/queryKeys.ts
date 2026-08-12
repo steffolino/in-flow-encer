@@ -14,6 +14,8 @@ export const queryKeys = {
   // refetch at all, silently serving the previous tenant's cached data.
   attention: (tenantSlug: string | null, filters: Filters) =>
     ['attention', tenantSlug, filters] as const,
+  forecast: (tenantSlug: string | null, filters: Filters) =>
+    ['forecast', tenantSlug, filters] as const,
   comparison: (tenantSlug: string | null, filters: Filters) =>
     ['comparison', tenantSlug, filters] as const,
   socialContent: (tenantSlug: string | null, filters: Filters) =>

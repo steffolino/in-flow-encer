@@ -142,6 +142,39 @@ export const attentionResponseSchema = z.object({
 export type AttentionResponse = z.infer<typeof attentionResponseSchema>
 
 // ---------------------------------------------------------------------------
+// Analytics: forecast
+// ---------------------------------------------------------------------------
+export const forecastConfidenceSchema = z.union([
+  z.literal('high'),
+  z.literal('medium'),
+  z.literal('low'),
+])
+export type ForecastConfidence = z.infer<typeof forecastConfidenceSchema>
+
+export const forecastCellSchema = z.object({
+  place_id: z.string(),
+  place_name: z.string(),
+  lon: z.number(),
+  lat: z.number(),
+  attention_score: z.number(),
+  forecast_score: z.number(),
+  forecast_score_low: z.number(),
+  forecast_score_high: z.number(),
+  trend_pct: z.number().nullable().optional(),
+  confidence: forecastConfidenceSchema,
+  drivers: z.record(z.string(), z.number()),
+})
+export type ForecastCell = z.infer<typeof forecastCellSchema>
+
+export const forecastResponseSchema = z.object({
+  generated_at: z.string(),
+  method: z.string(),
+  not_yet_connected: z.array(z.string()),
+  cells: z.array(forecastCellSchema),
+})
+export type ForecastResponse = z.infer<typeof forecastResponseSchema>
+
+// ---------------------------------------------------------------------------
 // Analytics: comparison
 // ---------------------------------------------------------------------------
 export const attentionLevelSchema = z.union([z.literal('high'), z.literal('low')])

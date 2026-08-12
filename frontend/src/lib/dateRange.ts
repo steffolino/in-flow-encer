@@ -7,11 +7,32 @@ function toIsoDate(date: Date): string {
   return `${String(year)}-${month}-${day}`
 }
 
-/** Default filter window: the trailing 30 days up to and including today. */
-export function defaultDateRange(today: Date = new Date()): { from: string; to: string } {
-  const to = toIsoDate(today)
-  const fromDate = new Date(today)
-  fromDate.setDate(fromDate.getDate() - 30)
-  const from = toIsoDate(fromDate)
-  return { from, to }
+export interface MonthOption {
+  /** e.g. "May 2026" */
+  label: string
+  from: string
+  to: string
+}
+
+/**
+ * The pilot-region demo window the time slider steps through, month by
+ * month. Anchored to when the seeded sample data actually has social-content
+ * posts (backend/seed/generate_fixture.py's PERIOD_1: May 2026, PERIOD_2:
+ * mid-June-mid-July 2026), with a month of context on either side, rather
+ * than the current calendar date — a "trailing 30 days from today" default
+ * would show an empty map for this fixed-date synthetic dataset.
+ */
+export function pilotWindowMonths(): MonthOption[] {
+  const months: MonthOption[] = []
+  for (let month = 3; month <= 7; month += 1) {
+    // month is 0-indexed: 3 = April, 7 = August.
+    const start = new Date(2026, month, 1)
+    const end = new Date(2026, month + 1, 0)
+    months.push({
+      label: start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+      from: toIsoDate(start),
+      to: toIsoDate(end),
+    })
+  }
+  return months
 }

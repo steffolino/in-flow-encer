@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useAttention } from '../api/useAttention'
 import { useComparison } from '../api/useComparison'
+import { useForecast } from '../api/useForecast'
 import { useOverlays } from '../api/useOverlays'
 import { usePlaces } from '../api/usePlaces'
 import { useSocialContent } from '../api/useSocialContent'
 import { Header } from '../components/layout/Header'
+import { MapIntro } from '../components/layout/MapIntro'
 import { Footer } from '../components/layout/Footer'
 import { DesktopLayout } from '../components/layout/DesktopLayout'
 import { MobileLayout } from '../components/layout/MobileLayout'
@@ -30,12 +32,15 @@ export function MapPage(): React.JSX.Element {
   }, [activeSlug])
 
   const attentionQuery = useAttention(filters, hasTenant)
+  const forecastQuery = useForecast(filters, hasTenant)
   const comparisonQuery = useComparison(filters, hasTenant)
   const socialContentQuery = useSocialContent(filters, hasTenant)
   const overlaysQuery = useOverlays(hasTenant)
   const placesQuery = usePlaces(hasTenant)
 
   const cells = attentionQuery.data?.cells ?? []
+  const forecastCells = forecastQuery.data?.cells ?? []
+  const forecastNotYetConnected = forecastQuery.data?.not_yet_connected ?? []
   const overlays = overlaysQuery.data ?? []
   const socialItems = socialContentQuery.data?.items ?? []
   const places = placesQuery.data ?? []
@@ -55,15 +60,20 @@ export function MapPage(): React.JSX.Element {
     onSelectPlace: setSelectedPlaceId,
     summary,
     comparisonItems,
+    forecastCells,
+    forecastNotYetConnected,
     isTableLoading: hasTenant && attentionQuery.isLoading,
     isTableError: hasTenant && attentionQuery.isError,
     isComparisonLoading: hasTenant && comparisonQuery.isLoading,
     isComparisonError: hasTenant && comparisonQuery.isError,
+    isForecastLoading: hasTenant && forecastQuery.isLoading,
+    isForecastError: hasTenant && forecastQuery.isError,
   }
 
   return (
     <div className="app-shell">
       <Header />
+      <MapIntro />
       {!hasTenant && (
         <p className="status-message" role="status" style={{ padding: '0 1.25rem' }}>
           No tenant selected yet — pick one above. Data panels below will show their own
@@ -76,6 +86,7 @@ export function MapPage(): React.JSX.Element {
         <div className="map-layer">
           <MapView
             attentionCells={cells}
+            forecastCells={forecastCells}
             socialContentItems={socialItems}
             places={places}
             overlays={overlays}

@@ -1,12 +1,14 @@
 import { FilterPanel } from '../filters/FilterPanel'
+import { TimeRangeSlider } from '../filters/TimeRangeSlider'
 import { LayerControls } from '../layers/LayerControls'
 import { ComparisonPanel } from '../summary/ComparisonPanel'
+import { ForecastPanel } from '../summary/ForecastPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
 import { useUI, type PanelId } from '../../state/ui'
 import { FloatingPanel } from './FloatingPanel'
-import type { AttentionCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
+import type { AttentionCell, ForecastCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
 import type { DashboardSummary } from '../../lib/summary'
 
 interface DesktopLayoutProps {
@@ -16,15 +18,20 @@ interface DesktopLayoutProps {
   onSelectPlace: (placeId: string) => void
   summary: DashboardSummary
   comparisonItems: ComparisonItem[]
+  forecastCells: ForecastCell[]
+  forecastNotYetConnected: string[]
   isTableLoading: boolean
   isTableError: boolean
   isComparisonLoading: boolean
   isComparisonError: boolean
+  isForecastLoading: boolean
+  isForecastError: boolean
 }
 
 const PANEL_LABELS: Record<PanelId, string> = {
   filters: 'Filters',
   layers: 'Layers',
+  forecast: 'Forecast & drivers',
   comparison: 'Compare to visitor flow',
   import: 'Import data',
 }
@@ -36,10 +43,14 @@ export function DesktopLayout({
   onSelectPlace,
   summary,
   comparisonItems,
+  forecastCells,
+  forecastNotYetConnected,
   isTableLoading,
   isTableError,
   isComparisonLoading,
   isComparisonError,
+  isForecastLoading,
+  isForecastError,
 }: DesktopLayoutProps): React.JSX.Element {
   const { ui, dispatch } = useUI()
 
@@ -66,6 +77,8 @@ export function DesktopLayout({
           </button>
         </div>
 
+        <TimeRangeSlider />
+
         <div className="hud-summary-strip">
           <span className="hud-stat">
             <strong>{summary.postsInPeriod}</strong> posts
@@ -79,6 +92,13 @@ export function DesktopLayout({
         </div>
 
         <div className="hud-top-bar-group">
+          <button
+            type="button"
+            className={`btn btn-secondary hud-toggle ${ui.desktopOpenPanel === 'forecast' ? 'hud-toggle-active' : ''}`}
+            onClick={() => { togglePanel('forecast'); }}
+          >
+            Forecast
+          </button>
           <button
             type="button"
             className={`btn btn-secondary hud-toggle ${ui.desktopOpenPanel === 'comparison' ? 'hud-toggle-active' : ''}`}
@@ -104,6 +124,16 @@ export function DesktopLayout({
       {ui.desktopOpenPanel === 'layers' && (
         <FloatingPanel title={PANEL_LABELS.layers} side="left" onClose={closePanel}>
           <LayerControls overlays={overlays} />
+        </FloatingPanel>
+      )}
+      {ui.desktopOpenPanel === 'forecast' && (
+        <FloatingPanel title={PANEL_LABELS.forecast} side="right" onClose={closePanel}>
+          <ForecastPanel
+            cells={forecastCells}
+            notYetConnected={forecastNotYetConnected}
+            isLoading={isForecastLoading}
+            isError={isForecastError}
+          />
         </FloatingPanel>
       )}
       {ui.desktopOpenPanel === 'comparison' && (
