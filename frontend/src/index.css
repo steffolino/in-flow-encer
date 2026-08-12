@@ -719,7 +719,12 @@ a {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  right: 0.75rem;
+  /* max-width (not a plain right inset) caps how far this can grow without
+     making the box itself span the full width — an invisible full-width box
+     here would sit over the map's own zoom control in the top-right corner
+     and silently swallow taps meant for it. */
+  max-width: calc(100% - 4.5rem);
+  width: fit-content;
   z-index: 10;
   display: flex;
   flex-direction: column;
