@@ -10,9 +10,12 @@ from app.api.schemas import (
     AttentionResponse,
     ComparisonItemOut,
     ComparisonResponse,
+    ForecastCellOut,
+    ForecastResponse,
 )
 from app.application.analytics.attention import AttentionAggregator
 from app.application.analytics.comparison import ComparisonService
+from app.application.analytics.forecast import ForecastService
 from app.db.session import get_db
 from app.domain.tenancy.models import Tenant
 from app.infrastructure.repositories.overlays import OverlayRepository
@@ -40,6 +43,28 @@ def get_attention(
         generated_at=result.generated_at,
         weights=result.weights,
         cells=[AttentionCellOut(**vars(cell)) for cell in result.cells],
+    )
+
+
+@router.get("/forecast", response_model=ForecastResponse)
+def get_forecast(
+    tenant: Tenant = Depends(get_current_tenant),
+    db: Session = Depends(get_db),
+    date_from: datetime | None = Query(default=None),
+    date_to: datetime | None = Query(default=None),
+    platform: str | None = Query(default=None),
+    region: str | None = Query(default=None),
+    source_id: UUID | None = Query(default=None),
+) -> ForecastResponse:
+    service = ForecastService(SocialContentRepository(db), PlaceRepository(db))
+    result = service.compute(
+        tenant.id, date_from=date_from, date_to=date_to, platform=platform, region=region, source_id=source_id
+    )
+    return ForecastResponse(
+        generated_at=result.generated_at,
+        method=result.method,
+        not_yet_connected=result.not_yet_connected,
+        cells=[ForecastCellOut(**vars(cell)) for cell in result.cells],
     )
 
 

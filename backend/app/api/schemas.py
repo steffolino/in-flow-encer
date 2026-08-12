@@ -85,6 +85,27 @@ class AttentionResponse(BaseModel):
     cells: list[AttentionCellOut]
 
 
+class ForecastCellOut(BaseModel):
+    place_id: uuid.UUID
+    place_name: str
+    lon: float
+    lat: float
+    attention_score: float
+    forecast_score: float
+    forecast_score_low: float
+    forecast_score_high: float
+    trend_pct: float | None
+    confidence: str
+    drivers: dict[str, float]
+
+
+class ForecastResponse(BaseModel):
+    generated_at: datetime
+    method: str
+    not_yet_connected: list[str]
+    cells: list[ForecastCellOut]
+
+
 class ComparisonItemOut(BaseModel):
     place_id: uuid.UUID
     place_name: str
