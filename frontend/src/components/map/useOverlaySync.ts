@@ -24,13 +24,15 @@ export function useOverlaySync(
   geometryType: OverlayGeometryType,
   data: FeatureCollection<Geometry, OverlayFeatureProperties> | undefined,
   layerState: LayerState,
+  isDarkBasemap = false,
+  styleRevision = 0,
 ): void {
   const sourceId = sourceIdFor(overlayId)
   const layerId = layerIdFor(overlayId)
   const color = OVERLAY_GEOMETRY_COLORS[geometryType]
 
   useEffect(() => {
-    if (!map || !data) return
+    if (!map || !data || styleRevision === 0 || !map.isStyleLoaded()) return
 
     if (!map.getSource(sourceId)) {
       map.addSource(sourceId, { type: 'geojson', data })
@@ -43,7 +45,7 @@ export function useOverlaySync(
           paint: {
             'circle-radius': 6,
             'circle-color': color,
-            'circle-stroke-color': '#ffffff',
+            'circle-stroke-color': isDarkBasemap ? '#111827' : '#ffffff',
             'circle-stroke-width': 1.5,
             'circle-opacity': layerState.opacity,
             'circle-stroke-opacity': layerState.opacity,
@@ -83,8 +85,8 @@ export function useOverlaySync(
       if (map.getLayer(layerId)) map.removeLayer(layerId)
       if (map.getSource(sourceId)) map.removeSource(sourceId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer created once per (map, overlay); style/data handled below
-  }, [map, sourceId, layerId, geometryType])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer is created once per loaded basemap style; data/visibility handled below
+  }, [map, sourceId, layerId, geometryType, isDarkBasemap, styleRevision])
 
   useEffect(() => {
     if (!map || !data) return

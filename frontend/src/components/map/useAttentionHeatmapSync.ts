@@ -18,9 +18,10 @@ export function useAttentionHeatmapSync(
   map: MapLibreMap | null,
   data: FeatureCollection<Point, AttentionPointProperties>,
   layerState: LayerState,
+  styleRevision = 0,
 ): void {
   useEffect(() => {
-    if (!map) return
+    if (!map || styleRevision === 0 || !map.isStyleLoaded()) return
 
     if (!map.getSource(SOURCE_ID)) {
       map.addSource(SOURCE_ID, { type: 'geojson', data })
@@ -50,8 +51,8 @@ export function useAttentionHeatmapSync(
       if (map.getLayer(LAYER_ID)) map.removeLayer(LAYER_ID)
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer created once per map instance; data/visibility handled below
-  }, [map])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer is created once per loaded basemap style; data/visibility handled below
+  }, [map, styleRevision])
 
   useEffect(() => {
     if (!map?.getLayer(LAYER_ID)) return

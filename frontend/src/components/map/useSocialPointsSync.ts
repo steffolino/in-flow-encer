@@ -18,9 +18,11 @@ export function useSocialPointsSync(
   map: MapLibreMap | null,
   data: FeatureCollection<Point, SocialPointProperties>,
   layerState: LayerState,
+  isDarkBasemap = false,
+  styleRevision = 0,
 ): void {
   useEffect(() => {
-    if (!map) return
+    if (!map || styleRevision === 0 || !map.isStyleLoaded()) return
 
     if (!map.getSource(SOURCE_ID)) {
       map.addSource(SOURCE_ID, { type: 'geojson', data })
@@ -31,7 +33,7 @@ export function useSocialPointsSync(
         paint: {
           'circle-radius': 5,
           'circle-color': SOCIAL_POINT_COLOR,
-          'circle-stroke-color': '#ffffff',
+          'circle-stroke-color': isDarkBasemap ? '#111827' : '#ffffff',
           'circle-stroke-width': 1,
           'circle-opacity': layerState.opacity,
           'circle-stroke-opacity': layerState.opacity,
@@ -48,8 +50,8 @@ export function useSocialPointsSync(
       if (map.getLayer(LAYER_ID)) map.removeLayer(LAYER_ID)
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer created once per map instance; data/visibility handled below
-  }, [map])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer is created once per loaded basemap style; data/visibility handled below
+  }, [map, isDarkBasemap, styleRevision])
 
   useEffect(() => {
     if (!map?.getLayer(LAYER_ID)) return

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { BASEMAP_STYLE, BAVARIAN_ALPS_CENTER, DEFAULT_ZOOM } from '../../lib/mapStyle'
+import { BASEMAP_STYLES, BAVARIAN_ALPS_CENTER, DEFAULT_ZOOM, type BasemapScheme } from '../../lib/mapStyle'
 import { attentionCellsToGeoJSON, forecastCellsToGeoJSON, socialContentToGeoJSON } from '../../lib/mapLayers'
 import type { AttentionCell, ForecastCell, OverlayLayer, Place, SocialContentItem } from '../../api/schemas'
 import {
@@ -29,6 +29,30 @@ interface MapViewProps {
   onSelectPlace: (placeId: string) => void
 }
 
+function getPreferredBasemapScheme(): BasemapScheme {
+  if (typeof window === 'undefined') return 'light'
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function usePreferredBasemapScheme(): BasemapScheme {
+  const [scheme, setScheme] = useState<BasemapScheme>(getPreferredBasemapScheme)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = (): void => {
+      setScheme(mediaQuery.matches ? 'dark' : 'light')
+    }
+
+    handleChange()
+    mediaQuery.addEventListener('change', handleChange)
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [])
+
+  return scheme
+}
+
 export function MapView({
   attentionCells,
   forecastCells,
@@ -42,6 +66,9 @@ export function MapView({
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const [map, setMap] = useState<MapLibreMap | null>(null)
+  const [styleRevision, setStyleRevision] = useState(0)
+  const basemapScheme = usePreferredBasemapScheme()
+  const activeBasemapSchemeRef = useRef<BasemapScheme | null>(null)
   const { activeSlug } = useTenant()
   const fittedTenantRef = useRef<string | null>(null)
 
@@ -80,6 +107,7 @@ export function MapView({
     map,
     attentionData,
     layers[ATTENTION_HEATMAP_LAYER_ID] ?? defaultLayerState(),
+    styleRevision,
   )
   useAttentionMarkersSync(
     map,
@@ -87,9 +115,29 @@ export function MapView({
     layers[ATTENTION_HEATMAP_LAYER_ID] ?? defaultLayerState(),
     selectedPlaceId,
     onSelectPlace,
+    basemapScheme === 'dark',
+    styleRevision,
   )
-  useForecastMarkersSync(map, forecastData, layers[FORECAST_LAYER_ID] ?? defaultLayerState())
-  useSocialPointsSync(map, socialData, layers[SOCIAL_POINTS_LAYER_ID] ?? defaultLayerState())
+  useForecastMarkersSync(
+    map,
+    forecastData,
+    layers[FORECAST_LAYER_ID] ?? defaultLayerState(),
+    basemapScheme === 'dark',
+    styleRevision,
+  )
+  useSocialPointsSync(
+    map,
+    socialData,
+    layers[SOCIAL_POINTS_LAYER_ID] ?? defaultLayerState(),
+    basemapScheme === 'dark',
+    styleRevision,
+  )
+
+  useEffect(() => {
+    if (!map || activeBasemapSchemeRef.current === basemapScheme) return
+    activeBasemapSchemeRef.current = basemapScheme
+    map.setStyle(BASEMAP_STYLES[basemapScheme])
+  }, [map, basemapScheme])
 
   // Declared last (not first) on purpose: React unmounts effects for a given
   // component in the order they were set up, so this must be the LAST effect
@@ -104,23 +152,30 @@ export function MapView({
 
     const instance = new maplibregl.Map({
       container: containerRef.current,
-      style: BASEMAP_STYLE,
+      style: BASEMAP_STYLES[basemapScheme],
       center: BAVARIAN_ALPS_CENTER,
       zoom: DEFAULT_ZOOM,
       attributionControl: false,
     })
+    activeBasemapSchemeRef.current = basemapScheme
     instance.addControl(new maplibregl.NavigationControl(), 'top-right')
     instance.addControl(new maplibregl.AttributionControl({ compact: true }))
     mapRef.current = instance
+    instance.on('style.load', () => {
+      setStyleRevision((current) => current + 1)
+    })
     instance.on('load', () => {
       setMap(instance)
+      setStyleRevision((current) => current + 1)
     })
 
     return () => {
       instance.remove()
       mapRef.current = null
       setMap(null)
+      setStyleRevision(0)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- basemap changes are applied through map.setStyle above.
   }, [])
 
   return (
@@ -136,6 +191,8 @@ export function MapView({
           map={map}
           overlay={overlay}
           layerState={layers[overlay.id] ?? defaultLayerState()}
+          isDarkBasemap={basemapScheme === 'dark'}
+          styleRevision={styleRevision}
         />
       ))}
     </div>

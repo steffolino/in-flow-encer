@@ -49,13 +49,15 @@ export function useAttentionMarkersSync(
   layerState: LayerState,
   selectedPlaceId: string | null,
   onSelectPlace: (placeId: string) => void,
+  isDarkBasemap = false,
+  styleRevision = 0,
 ): void {
   const popupRef = useRef<Popup | null>(null)
   const onSelectPlaceRef = useRef(onSelectPlace)
   onSelectPlaceRef.current = onSelectPlace
 
   useEffect(() => {
-    if (!map) return
+    if (!map || styleRevision === 0 || !map.isStyleLoaded()) return
 
     if (!map.getSource(SOURCE_ID)) {
       map.addSource(SOURCE_ID, { type: 'geojson', data })
@@ -80,8 +82,8 @@ export function useAttentionMarkersSync(
         type: 'symbol',
         source: SOURCE_ID,
         paint: {
-          'text-color': '#1c1917',
-          'text-halo-color': '#ffffff',
+          'text-color': isDarkBasemap ? '#f8fafc' : '#1c1917',
+          'text-halo-color': isDarkBasemap ? '#111827' : '#ffffff',
           'text-halo-width': 1.4,
           'text-opacity': layerState.opacity,
         },
@@ -136,8 +138,8 @@ export function useAttentionMarkersSync(
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID)
       popupRef.current?.remove()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- layer created once per map instance; data/visibility/selection handled below
-  }, [map])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- layers are created once per loaded basemap style; data/visibility/selection handled below
+  }, [map, isDarkBasemap, styleRevision])
 
   useEffect(() => {
     if (!map?.getLayer(CIRCLE_LAYER_ID)) return

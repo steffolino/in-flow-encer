@@ -22,9 +22,11 @@ export function useForecastMarkersSync(
   map: MapLibreMap | null,
   data: FeatureCollection<Point, ForecastPointProperties>,
   layerState: LayerState,
+  isDarkBasemap = false,
+  styleRevision = 0,
 ): void {
   useEffect(() => {
-    if (!map) return
+    if (!map || styleRevision === 0 || !map.isStyleLoaded()) return
 
     if (!map.getSource(SOURCE_ID)) {
       map.addSource(SOURCE_ID, { type: 'geojson', data })
@@ -59,8 +61,8 @@ export function useForecastMarkersSync(
         type: 'symbol',
         source: SOURCE_ID,
         paint: {
-          'text-color': '#065f46',
-          'text-halo-color': '#ffffff',
+          'text-color': isDarkBasemap ? '#bbf7d0' : '#065f46',
+          'text-halo-color': isDarkBasemap ? '#052e16' : '#ffffff',
           'text-halo-width': 1.4,
           'text-opacity': layerState.opacity,
         },
@@ -83,8 +85,8 @@ export function useForecastMarkersSync(
       if (map.getLayer(CIRCLE_LAYER_ID)) map.removeLayer(CIRCLE_LAYER_ID)
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- layers created once per map instance; data/visibility handled below
-  }, [map])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- layers are created once per loaded basemap style; data/visibility handled below
+  }, [map, isDarkBasemap, styleRevision])
 
   useEffect(() => {
     if (!map?.getLayer(CIRCLE_LAYER_ID)) return
