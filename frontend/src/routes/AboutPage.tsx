@@ -205,13 +205,247 @@ export function AboutPage(): React.JSX.Element {
           </p>
         </section>
 
+        <section className="panel about-vision">
+          <span className="about-vision-badge">Vision — not built</span>
+          <h2>Where this could go</h2>
+          <p>
+            Everything above this section describes what actually runs today. This section is
+            the opposite: a target architecture the current pipeline generalizes toward, none of
+            which exists yet. It's here so the direction is explicit rather than implied —
+            nothing below should be mistaken for a shipped feature.
+          </p>
+          <p>
+            The current MVP does one thing: turn social-media attention into a tourism signal.
+            The underlying pipeline — ingest → normalize → georeference → aggregate → analyze →
+            present — doesn't have to stop there. The same shape could carry environmental
+            monitoring signals alongside tourism ones, with tourism becoming <em>one application
+            on a broader platform</em> rather than the platform's only purpose. Nothing about the
+            current tourism use case would be removed or replaced by this — it would just stop
+            being the only thing the pipeline is used for.
+          </p>
+
+          <div className="vision-modules">
+            <div className="vision-module">
+              <h3>Inflowencer Core</h3>
+              <ul>
+                <li>Ingestion</li>
+                <li>Normalization</li>
+                <li>Georeferencing</li>
+                <li>Time series</li>
+                <li>Provenance</li>
+                <li>Quality information</li>
+              </ul>
+              <p className="vision-today">
+                Today: ingestion, deterministic georeferencing, and per-match confidence already
+                exist for social content. Dedicated time-series storage and formal
+                provenance/quality metadata do not.
+              </p>
+            </div>
+
+            <div className="vision-module">
+              <h3>Pressure Intelligence</h3>
+              <ul>
+                <li>Social / web</li>
+                <li>Visitors</li>
+                <li>Mobility</li>
+                <li>Events</li>
+              </ul>
+              <p className="vision-today">
+                Today: social/web attention is the entire current signal. Visitor data exists
+                only as customer-uploaded CSV/GeoJSON overlays (parking, footfall counters) — no
+                mobility or event data source exists.
+              </p>
+            </div>
+
+            <div className="vision-module">
+              <h3>Nature Intelligence</h3>
+              <ul>
+                <li>Protected areas</li>
+                <li>Habitats</li>
+                <li>Species</li>
+                <li>Biodiversity indicators</li>
+                <li>Environmental / satellite data</li>
+              </ul>
+              <p className="vision-today">
+                Today: none of this exists. The sample data includes one protected-areas GeoJSON
+                file, but it's loaded as a generic overlay layer, not a dedicated nature-data
+                domain.
+              </p>
+            </div>
+
+            <div className="vision-module">
+              <h3>Analysis</h3>
+              <ul>
+                <li>Baselines</li>
+                <li>Anomalies</li>
+                <li>Trends</li>
+                <li>Spatial overlays</li>
+                <li>Forecasts (later)</li>
+                <li>Confidence / uncertainty</li>
+              </ul>
+              <p className="vision-today">
+                Today: period-over-period trend, the naive forecast, and confidence bands already
+                exist. Anomaly detection and true spatial-overlay analysis (beyond a fixed-radius
+                proximity check) do not.
+              </p>
+            </div>
+
+            <div className="vision-module">
+              <h3>Decision Support</h3>
+              <ul>
+                <li>Maps</li>
+                <li>Hotspots</li>
+                <li>Time series</li>
+                <li>Causes / signals</li>
+                <li>Domain annotation</li>
+                <li>Measures</li>
+                <li>Evaluation</li>
+              </ul>
+              <p className="vision-today">
+                Today: the map and attention "hotspot" markers exist, plus a basic forecast-driver
+                breakdown. Time-series charts, domain annotation, recommended measures, and
+                evaluation tooling do not.
+              </p>
+            </div>
+          </div>
+
+          <h3>Further reading for this direction</h3>
+          <p>
+            Not a fundraising reading list — the question here is what already works
+            scientifically for a Nature Intelligence direction, and where the open problems are.
+            If only three get read, these three would probably determine the hypotheses,
+            validation method, and data architecture directly:
+          </p>
+          <ol className="vision-reading-priority">
+            <li>
+              <a href="https://link.springer.com/article/10.1007/s00267-020-01373-7" target="_blank" rel="noopener noreferrer">
+                Wilkins, Wood &amp; Smith (2021) — Uses and Limitations of Social Media to Inform
+                Visitor Use Management in Parks and Protected Areas
+              </a>
+              . A systematic review specifically on social media + protected areas + visitor
+              management: what can actually be inferred about visitor numbers, spatial use, and
+              behavior — and where the limits are. Probably the single most load-bearing paper
+              for this direction's methodology: validation, uncertainty, bias correction, and
+              data-source selection all trace back to it.
+            </li>
+            <li>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0006320718317609" target="_blank" rel="noopener noreferrer">
+                Toivonen et al. (2019) — Social media data for conservation science
+              </a>
+              . A methodological overview of how social-media data is used in conservation
+              research — spatial usage patterns, human presence, preferences, content, combining
+              it with other geodata — plus bias, data access, and validation. Functions as the
+              scientific grounding for the social/geo pipeline this MVP already has.
+            </li>
+            <li>
+              <a href="https://www.mdpi.com/2220-9964/6/3/85" target="_blank" rel="noopener noreferrer">
+                Heikinheimo et al. (2017) — User-Generated Geographic Information for Visitor
+                Monitoring in a National Park
+              </a>
+              . A concrete comparison of social-media data against classical visitor surveys in a
+              national park — the missing ground-truth validation step this MVP itself doesn't
+              have yet: signal → predicted spatial pressure → compare against visitor
+              counters/surveys/mobility data.
+            </li>
+          </ol>
+          <ul>
+            <li>
+              <a href="https://www.nature.com/articles/s41598-017-18007-4" target="_blank" rel="noopener noreferrer">
+                Tenkanen et al. (2017) — Instagram, Flickr, or Twitter: Assessing the usability of
+                social media data for visitor monitoring in protected areas
+              </a>
+              — compares platforms' suitability for protected-area visitor monitoring; relevant
+              before deciding which sources belong in this pipeline, since more sources isn't
+              automatically better data.
+            </li>
+            <li>
+              <a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0167259" target="_blank" rel="noopener noreferrer">
+                Larson et al. (2016) — Effects of Recreation on Animals Revealed as Widespread
+                through a Global Systematic Review
+              </a>
+              — the other half of the equation: not "can we detect visitors" but "why is visitor
+              pressure an ecological problem at all." Documents that negative effects of
+              recreation on animals show up widely across contexts, but that effect size and
+              direction vary by species, activity, and situation — not a universal harm claim.
+              Human presence and ecological impact would need to be modeled separately, not
+              conflated, and "presence detected" would not by itself imply "impact occurred."
+            </li>
+            <li>
+              <a href="https://iucn.org/resources/publication/tourism-and-visitor-management-protected-areas" target="_blank" rel="noopener noreferrer">
+                IUCN (2018) — Tourism and Visitor Management in Protected Areas
+              </a>
+              — domain knowledge rather than data science: sustainable visitor management,
+              monitoring, interventions, and evaluation in real protected-area practice. A guard
+              against building a technically interesting dashboard that doesn't fit how a
+              protected-area authority actually works — signal → interpretation → decision →
+              measure → evaluation, not just signal → map.
+            </li>
+            <li>
+              <a href="https://www.sciencedirect.com/science/article/pii/S259033222300088X" target="_blank" rel="noopener noreferrer">
+                Ghermandi et al. (2023) — Social media data for environmental sustainability
+              </a>
+              — a broader, more recent review covering data quality, access restrictions, and
+              ethical risk: what a signal is actually allowed to justify claiming.
+            </li>
+          </ul>
+
+          <h3>Concrete data sources for this direction</h3>
+          <ul>
+            <li>
+              <a href="https://www.bfn.de/daten-und-fakten/kartenanwendung-schutzgebiete-deutschland" target="_blank" rel="noopener noreferrer">
+                BfN protected areas (Germany)
+              </a>
+              — nature reserves, national parks, biosphere reserves, Natura 2000/FFH areas, with
+              a{' '}
+              <a href="https://geodienste.bfn.de/ogc/wfs/schutzgebiet" target="_blank" rel="noopener noreferrer">
+                WFS download service
+              </a>{' '}
+              already available.
+            </li>
+            <li>
+              <a href="https://www.bfn.de/lebensraumtypen" target="_blank" rel="noopener noreferrer">
+                BfN FFH habitat types
+              </a>
+              — "inside a protected area" alone is ecologically coarse; habitat type would let
+              pressure be weighed against ecological sensitivity instead of a flat true/false.
+            </li>
+            <li>
+              <a href="https://www.gbif.org/" target="_blank" rel="noopener noreferrer">
+                GBIF
+              </a>{' '}
+              — georeferenced species-occurrence data. Paired with{' '}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2879389/" target="_blank" rel="noopener noreferrer">
+                Boakes et al. (2010) — Distorted Views of Biodiversity
+              </a>
+              , which documents that no observation doesn't mean no species — that uncertainty
+              belongs in the data model, not silently dropped in the frontend.
+            </li>
+            <li>
+              <a href="https://documentation.dataspace.copernicus.eu/Data/CopernicusServices/CLMS.html" target="_blank" rel="noopener noreferrer">
+                Copernicus Land Monitoring Service
+              </a>
+              — the likely source for a future environment-state layer: land cover, vegetation
+              state (
+              <a href="https://documentation.dataspace.copernicus.eu/APIs/SentinelHub/Data/clms/bio-geophysical-parameters/vegetation/vegetation-indices/ndvi_global_300m_10daily_v2.html" target="_blank" rel="noopener noreferrer">
+                NDVI
+              </a>
+              ), and{' '}
+              <a href="https://documentation.dataspace.copernicus.eu/APIs/SentinelHub/Data/clms/bio-geophysical-parameters/soil-moisture/soil-water-index/swi_europe_1km_daily_v1.html" target="_blank" rel="noopener noreferrer">
+                soil moisture
+              </a>
+              . Lowest priority of this list — after protected areas and ground-truth validation.
+            </li>
+          </ul>
+        </section>
+
         <section className="panel">
           <h2>More on this topic</h2>
           <p>
-            Rather than just listing competing products, these are three kinds of references
-            that make the thinking behind Inflowencer easier to trace: the research it builds
-            on, the open standards a future connector could speak, and comparable systems
-            already in the market.
+            Separate from the Nature Intelligence reading list above (which is about the
+            not-yet-built vision direction), these three kinds of references ground the
+            tourism-attention product that actually exists today: the research it builds on,
+            the open standards a future connector could speak, and comparable systems already
+            in the market — not competing products for their own sake.
           </p>
 
           <h3>Methodology &amp; research</h3>

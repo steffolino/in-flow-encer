@@ -505,6 +505,70 @@ a {
   font-size: 0.82rem;
 }
 
+/* Deliberately visually distinct from every other section on this page —
+   dashed border, off-hue accent, explicit badge — so a "target architecture"
+   sketch can never be mistaken for a description of the shipped product. */
+.about-vision {
+  border-left-style: dashed;
+  border-left-color: #7c3aed;
+}
+
+.about-vision > h2::before {
+  color: #7c3aed;
+}
+
+.about-vision-badge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px dashed #7c3aed;
+  color: #7c3aed;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vision-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.vision-module {
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+
+.vision-module h3 {
+  margin-top: 0;
+  color: #7c3aed;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.88rem;
+}
+
+.vision-module ul {
+  margin: 0 0 0.6rem;
+}
+
+.vision-module ul li {
+  font-size: 0.82rem;
+  margin-bottom: 0.3rem;
+}
+
+.vision-today {
+  margin: 0;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--color-border);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
 .about-page ul {
   list-style: none;
   padding-left: 0;
@@ -527,6 +591,50 @@ a {
 
 .about-page ul li:last-child {
   margin-bottom: 0;
+}
+
+/* The "if you only read three things" list — visually heavier than the
+   plain arrow-bullet lists so it reads as the priority subset, not just
+   more items in the same list. */
+.vision-reading-priority {
+  list-style: none;
+  counter-reset: vision-reading;
+  margin: 0.85rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.vision-reading-priority li {
+  counter-increment: vision-reading;
+  position: relative;
+  padding: 0.7rem 0.85rem 0.7rem 2.4rem;
+  background: var(--color-bg);
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.vision-reading-priority li::before {
+  content: counter(vision-reading);
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vision-reading-priority li a {
+  font-weight: 700;
 }
 
 .map-container {
