@@ -1,5 +1,6 @@
 {
   "$schema": "./frontend/node_modules/wrangler/config-schema.json",
   "name": "in-flow-encer",
+  "compatibility_date": "2026-08-13",
   "pages_build_output_dir": "./frontend/dist"
 }
