@@ -1706,6 +1706,136 @@ tr.row-selected {
   tr.row-selected {
     background: #1e2a4a;
   }
+
+  .detail-panel {
+    background: var(--panel-bg);
+    box-shadow: inset 0 0 0 1px var(--panel-border);
+  }
+
+  .detail-panel-icon {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--panel-fg);
+  }
+
+  .detail-panel-title {
+    color: #f4f6fb;
+  }
+
+  .detail-panel-text {
+    color: #c3cad6;
+  }
+
+  .detail-panel--observational {
+    --panel-bg: #351b1d;
+    --panel-border: rgba(255, 139, 130, 0.22);
+    --panel-fg: #ff9c92;
+  }
+
+  .detail-panel--overlay {
+    --panel-bg: #252344;
+    --panel-border: rgba(169, 166, 255, 0.24);
+    --panel-fg: #aaa8ff;
+  }
+
+  .detail-panel--core {
+    --panel-bg: #142b38;
+    --panel-border: rgba(106, 191, 229, 0.24);
+    --panel-fg: #74c4ed;
+  }
+
+  .detail-panel--forecast {
+    --panel-bg: #123128;
+    --panel-border: rgba(89, 220, 173, 0.24);
+    --panel-fg: #6ee7b7;
+  }
+
+  .detail-panel--future {
+    --panel-bg: #2b2145;
+    --panel-border: rgba(190, 165, 255, 0.24);
+    --panel-fg: #c4adff;
+  }
+
+  .architecture-stage {
+    background:
+      radial-gradient(circle at 50% 18%, rgba(88, 166, 217, 0.16), transparent 34%),
+      linear-gradient(180deg, rgba(88, 166, 217, 0.08), rgba(124, 58, 237, 0.08));
+  }
+
+  .architecture-edge {
+    stroke: rgba(154, 161, 173, 0.34);
+  }
+
+  .architecture-edge--future {
+    stroke: rgba(196, 173, 255, 0.42);
+  }
+
+  .architecture-chip,
+  .step-btn {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  }
+
+  .architecture-chip-label,
+  .step-btn-title {
+    color: #f4f6fb;
+  }
+
+  .architecture-chip--selected,
+  .step-btn--selected {
+    background: var(--chip-bg-active);
+    box-shadow: 0 0 0 2px var(--chip-fg), 0 14px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  .architecture-chip--observational,
+  .step-btn--observational {
+    --chip-bg: #351b1d;
+    --chip-bg-active: #512522;
+    --chip-fg: #ff9c92;
+  }
+
+  .architecture-chip--overlay,
+  .step-btn--overlay {
+    --chip-bg: #252344;
+    --chip-bg-active: #343061;
+    --chip-fg: #aaa8ff;
+  }
+
+  .architecture-chip--core,
+  .step-btn--core {
+    --chip-bg: #142b38;
+    --chip-bg-active: #1a3d50;
+    --chip-fg: #74c4ed;
+  }
+
+  .architecture-chip--forecast,
+  .step-btn--forecast {
+    --chip-bg: #123128;
+    --chip-bg-active: #174838;
+    --chip-fg: #6ee7b7;
+  }
+
+  .architecture-chip--future,
+  .step-btn--future {
+    --chip-bg: #2b2145;
+    --chip-bg-active: #3e2e68;
+    --chip-fg: #c4adff;
+  }
+
+  .stepper-row::before {
+    background: linear-gradient(90deg, transparent, rgba(154, 161, 173, 0.38), transparent);
+  }
+
+  .step-arrow {
+    background: rgba(154, 161, 173, 0.42);
+  }
+
+  .step-arrow::after {
+    border-color: rgba(154, 161, 173, 0.42);
+  }
+
+  .architecture-detail-close {
+    background: rgba(255, 255, 255, 0.08);
+    color: #c3cad6;
+  }
 }
 
 /* ---------- Narrow-viewport layout fixes ---------- */
