@@ -1,12 +1,7 @@
-import { useState } from 'react'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
-import { Lightbox } from '../components/layout/Lightbox'
-
-interface LightboxTarget {
-  src: string
-  alt: string
-}
+import { ArchitectureDiagram } from '../components/diagram/ArchitectureDiagram'
+import { PipelineStepper } from '../components/diagram/PipelineStepper'
 
 /**
  * A plain-language explanation of what this MVP is, how the forecast is
@@ -16,8 +11,6 @@ interface LightboxTarget {
  * engineering-level versions of the same claims.
  */
 export function AboutPage(): React.JSX.Element {
-  const [lightbox, setLightbox] = useState<LightboxTarget | null>(null)
-
   return (
     <div className="app-shell">
       <Header />
@@ -42,17 +35,20 @@ export function AboutPage(): React.JSX.Element {
 
         <section className="panel">
           <h2>Architecture</h2>
-          <p>The system is one straight pipeline, kept deliberately simple end to end:</p>
-          <p className="about-eyebrow">Pipeline</p>
-          <pre className="about-diagram">
-{`Social-content dataset (fixture/API)
-  -> deterministic place matching
-  -> PostGIS storage, scoped per tenant
-  -> geographic aggregation -> attention score
-  -> trend extrapolation -> forecast score
-  -> map (attention layer, forecast layer, uploaded overlays)
-  -> shared filters, comparison, and this page`}
-          </pre>
+          <p>
+            The system is one straight pipeline, kept deliberately simple end to end. Select any
+            stage below for what it actually does:
+          </p>
+
+          <figure className="about-figure">
+            <PipelineStepper />
+            <figcaption>
+              Social content and customer uploads converge on the map through deterministic
+              matching, storage, and aggregation. See "Forecast methodology" below and ADR 0008
+              for the full decision record.
+            </figcaption>
+          </figure>
+
           <p>
             Every stage is deterministic and auditable: location matching uses a fixed-order,
             fixed-confidence pipeline (never fuzzy, never guessed), and the attention/forecast
@@ -63,68 +59,12 @@ export function AboutPage(): React.JSX.Element {
           </p>
 
           <figure className="about-figure">
-            <div className="about-figure-scroll">
-              <button
-                type="button"
-                className="about-figure-trigger"
-                onClick={() => {
-                  setLightbox({
-                    src: '/img/architecture-and-forecast-methodology-overview.png',
-                    alt: "Diagram showing the Inflowencer data pipeline from social content and customer uploads through deterministic place matching, tenant-scoped PostGIS storage, geographic aggregation into an attention score, and trend extrapolation into a forecast score, alongside a breakdown of the forecast formula, a worked example, confidence bands by data volume, and which signals are and aren't included in the forecast.",
-                  })
-                }}
-                aria-label="Enlarge diagram"
-              >
-                <img
-                  src="/img/architecture-and-forecast-methodology-overview.png"
-                  alt="Diagram showing the Inflowencer data pipeline from social content and customer uploads through deterministic place matching, tenant-scoped PostGIS storage, geographic aggregation into an attention score, and trend extrapolation into a forecast score, alongside a breakdown of the forecast formula, a worked example, confidence bands by data volume, and which signals are and aren't included in the forecast."
-                />
-              </button>
-            </div>
+            <ArchitectureDiagram />
             <figcaption>
-              The end-to-end pipeline (left) and the forecast formula it feeds (right) — click to
-              enlarge. See "Forecast methodology" below and ADR 0008 for the full decision record.
+              A closer, more technical look at the same architecture: backend module boundaries
+              and the direction dependencies point in. Select a chip for detail; the future chip is
+              the one piece that is not built yet.
             </figcaption>
-            <p className="about-callout about-figure-correction">
-              <strong>One correction to this diagram:</strong> the "Comparison Panel (Example)"
-              mockup shows a detailed numeric score/diff table (exact attention scores, visitor
-              counts, a percentage-point difference). The real comparison panel is simpler — it
-              shows a plain-language high/low/unknown statement per place (e.g. "High social
-              attention and high visitor-flow values"), not a numeric side-by-side table.
-            </p>
-          </figure>
-
-          <figure className="about-figure">
-            <div className="about-figure-scroll">
-              <button
-                type="button"
-                className="about-figure-trigger"
-                onClick={() => {
-                  setLightbox({
-                    src: '/img/architecture-technical-deep-dive.png',
-                    alt: 'A more detailed technical diagram of the same pipeline, showing individual backend services (ingestion, matching, aggregation, forecast, export), the PostGIS data layer, cross-cutting concerns such as tenant isolation and determinism, and pluggable external integrations for future data sources.',
-                  })
-                }}
-                aria-label="Enlarge diagram"
-              >
-                <img
-                  src="/img/architecture-technical-deep-dive.png"
-                  alt="A more detailed technical diagram of the same pipeline, showing individual backend services (ingestion, matching, aggregation, forecast, export), the PostGIS data layer, cross-cutting concerns such as tenant isolation and determinism, and pluggable external integrations for future data sources."
-                />
-              </button>
-            </div>
-            <figcaption>
-              A closer, more technical look at the same architecture — click to enlarge.
-            </figcaption>
-            <p className="about-callout about-figure-correction">
-              <strong>Corrections to this diagram:</strong> the "audit_log" table it references
-              (in Core Tables and "Deterministic & auditable") doesn't exist — there's no
-              persisted audit log. The "Export Service" / CSV/GeoJSON "reports &amp; snapshots"
-              it shows also doesn't exist — the API only supports CSV/GeoJSON <em>import</em> for
-              overlays, not export. And "Storage (S3 compatible) for uploads &amp; exports" isn't
-              implemented either (uploads are processed in-memory) — unlike the other two
-              integrations shown, it's missing a "(future)" label.
-            </p>
           </figure>
         </section>
 
@@ -552,16 +492,6 @@ export function AboutPage(): React.JSX.Element {
       </main>
 
       <Footer />
-
-      {lightbox && (
-        <Lightbox
-          src={lightbox.src}
-          alt={lightbox.alt}
-          onClose={() => {
-            setLightbox(null)
-          }}
-        />
-      )}
     </div>
   )
 }

@@ -242,161 +242,6 @@ a {
   margin: 1rem 0;
 }
 
-/* These are dense, small-text diagrams (fixed 1536x1024 source) — shrinking
-   them to fit a narrow window makes the text illegible well before the pixel
-   scaling itself would look "blurry". Instead of letting them shrink past a
-   legible size, give the image a fixed floor width and let this wrapper
-   scroll horizontally on narrow viewports, the same pattern already used for
-   the formula/pipeline <pre> blocks on this page. */
-.about-figure-scroll {
-  overflow-x: auto;
-  padding-bottom: 2px;
-}
-
-.about-figure-trigger {
-  display: block;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: zoom-in;
-}
-
-.about-figure img {
-  width: 700px;
-  max-width: none;
-  height: auto;
-  display: block;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.about-figure-trigger:hover img {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
-  transform: translateY(-2px);
-}
-
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  overflow: hidden;
-  background: rgba(10, 12, 16, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1.5rem;
-  cursor: zoom-out;
-  animation: lightbox-fade-in 0.15s ease;
-}
-
-@keyframes lightbox-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  touch-action: none;
-  will-change: transform;
-}
-
-.lightbox-toolbar {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
-  padding: 0.3rem 0.4rem;
-}
-
-.lightbox-toolbar button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 0.12s ease;
-}
-
-.lightbox-toolbar button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.lightbox-toolbar button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.lightbox-reset {
-  width: auto !important;
-  border-radius: 999px !important;
-  padding: 0 0.75rem;
-  font-size: 0.75rem !important;
-  font-weight: 600;
-}
-
-.lightbox-zoom-level {
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  min-width: 2.6rem;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-
-.lightbox-close {
-  position: fixed;
-  top: 1rem;
-  right: 1.25rem;
-  z-index: 1001;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.12s ease;
-}
-
-.lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.lightbox-hint {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1001;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.72rem;
-  text-align: center;
-  pointer-events: none;
-}
-
 .about-figure figcaption {
   margin-top: 0.4rem;
   font-size: 0.78rem;
@@ -405,7 +250,7 @@ a {
 
 .about-page {
   flex: 1;
-  max-width: 46rem;
+  max-width: 52rem;
   margin: 0 auto;
   padding: 1.25rem 1.25rem 3rem;
   width: 100%;
@@ -490,19 +335,417 @@ a {
   white-space: pre;
 }
 
+/* Shared "select for more information" surface used by both diagrams —
+   nodes/steps stay minimal, the fuller paragraph only appears here. */
+.detail-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  background: var(--panel-bg);
+}
+
+.detail-panel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--panel-fg);
+}
+
+.detail-panel-body {
+  min-width: 0;
+}
+
+.detail-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.detail-panel-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--panel-fg);
+}
+
+.detail-panel-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.detail-panel-text {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.detail-panel--observational {
+  --panel-bg: rgba(185, 28, 28, 0.06);
+  --panel-fg: #b91c1c;
+}
+
+.detail-panel--overlay {
+  --panel-bg: rgba(67, 56, 202, 0.06);
+  --panel-fg: #4338ca;
+}
+
+.detail-panel--core {
+  --panel-bg: rgba(14, 95, 138, 0.06);
+  --panel-fg: var(--color-accent);
+}
+
+.detail-panel--forecast {
+  --panel-bg: rgba(5, 150, 105, 0.06);
+  --panel-fg: #059669;
+}
+
+.detail-panel--future {
+  --panel-bg: rgba(124, 58, 237, 0.05);
+  --panel-fg: #7c3aed;
+}
+
+/* The pipeline, drawn as an editorial "how it works" sequence — big numbered
+   steps and a thin rule connecting them, no boxes, no arrows dominating the
+   page. Two tracks (social attention vs. customer overlays) converge on one
+   shared final step. */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.stepper-track-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.stepper-track--secondary {
+  opacity: 1;
+}
+
+.stepper-row {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: visible;
+  padding: 0.35rem 0.25rem 0.45rem;
+}
+
+.stepper-row::before {
+  content: '';
+  position: absolute;
+  left: 0.8rem;
+  right: 0.8rem;
+  top: 50%;
+  height: 1px;
+  background: var(--color-border);
+  z-index: 0;
+}
+
+.stepper-merge-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.step-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding: 0.5rem 0.85rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  font-family: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.step-btn:hover {
+  transform: translateY(-1px);
+}
+
+.step-btn-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--chip-fg);
+}
+
+.step-btn-icon {
+  display: flex;
+  color: var(--chip-fg);
+}
+
+.step-btn-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.step-btn--selected {
+  background: var(--chip-bg-active);
+  box-shadow: 0 0 0 2px var(--chip-fg);
+}
+
+.step-btn--emphasized {
+  padding: 0.6rem 1.1rem;
+}
+
+.step-btn--emphasized .step-btn-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.step-arrow {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: 0 0.1rem;
+  background: var(--color-bg);
+}
+
 /* Reserved for the handful of statements that most need to land plainly —
    the validation caveat is the canonical use case. */
+/* Current About-page diagrams: plain CSS/SVG, no flowchart runtime. */
+.architecture-stage {
+  position: relative;
+  min-height: 420px;
+  padding: 1rem;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(14, 95, 138, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(14, 95, 138, 0.035), rgba(67, 56, 202, 0.035));
+  overflow: hidden;
+}
+
+.architecture-stage--drawer-open {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 32%);
+  gap: 1rem;
+}
+
+.architecture-map {
+  position: relative;
+  width: min(100%, 36rem);
+  min-height: 390px;
+  margin-inline: auto;
+}
+
+.architecture-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.architecture-edge {
+  fill: none;
+  stroke: rgba(86, 93, 107, 0.42);
+  stroke-linecap: round;
+  stroke-width: 0.55;
+}
+
+.architecture-edge--future {
+  stroke: rgba(124, 58, 237, 0.55);
+  stroke-dasharray: 1.2 1.4;
+}
+
+.architecture-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  max-width: 11rem;
+  min-height: 2.35rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  line-height: 1;
+  padding: 0.45rem 0.7rem;
+  box-shadow: 0 10px 24px rgba(20, 30, 45, 0.08);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.architecture-chip:hover,
+.architecture-chip:focus-visible {
+  transform: translate(-50%, calc(-50% - 1px));
+}
+
+.architecture-chip--selected {
+  background: var(--chip-bg-active);
+  box-shadow: 0 0 0 2px var(--chip-fg), 0 12px 26px rgba(20, 30, 45, 0.16);
+}
+
+.architecture-chip-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--chip-fg);
+}
+
+.architecture-chip-label {
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.architecture-chip-badge {
+  color: var(--chip-fg);
+  font-size: 0.64rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.architecture-chip--observational,
+.step-btn--observational {
+  --chip-bg: #fdeaea;
+  --chip-bg-active: #f8cfcf;
+  --chip-fg: #b91c1c;
+}
+
+.architecture-chip--overlay,
+.step-btn--overlay {
+  --chip-bg: #eeedff;
+  --chip-bg-active: #ddd9ff;
+  --chip-fg: #4338ca;
+}
+
+.architecture-chip--core,
+.step-btn--core {
+  --chip-bg: #e6f3f8;
+  --chip-bg-active: #cce8f2;
+  --chip-fg: var(--color-accent);
+}
+
+.architecture-chip--forecast,
+.step-btn--forecast {
+  --chip-bg: #e4f6ee;
+  --chip-bg-active: #c9eadc;
+  --chip-fg: #059669;
+}
+
+.architecture-chip--future,
+.step-btn--future {
+  --chip-bg: #f1e9ff;
+  --chip-bg-active: #e1d0ff;
+  --chip-fg: #7c3aed;
+}
+
+.architecture-detail-drawer {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  min-width: 0;
+}
+
+.architecture-detail-drawer .detail-panel {
+  width: 100%;
+  margin-top: 0;
+  padding-top: 2.25rem;
+}
+
+.architecture-detail-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stepper-body {
+  display: grid;
+  gap: 1rem;
+}
+
+.stepper-row::before {
+  background: linear-gradient(90deg, transparent, rgba(86, 93, 107, 0.45), transparent);
+}
+
+.step-btn {
+  background: var(--chip-bg);
+}
+
+.step-btn-label,
+.step-btn-icon {
+  color: var(--chip-fg);
+}
+
+.step-btn--selected {
+  background: var(--chip-bg-active);
+  box-shadow: 0 0 0 2px var(--chip-fg);
+}
+
+.step-arrow {
+  width: 2.2rem;
+  height: 1px;
+  padding: 0;
+  background: rgba(86, 93, 107, 0.5);
+}
+
+.step-arrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 1px solid rgba(86, 93, 107, 0.5);
+  border-right: 1px solid rgba(86, 93, 107, 0.5);
+  transform: translateY(-50%) rotate(45deg);
+}
+
 .about-callout {
   background: var(--color-bg);
   border: 1px solid var(--color-warning-border);
   border-left: 3px solid var(--color-warning-border);
   border-radius: 6px;
   padding: 0.9rem 1rem;
-}
-
-.about-figure-correction {
-  margin-top: 0.6rem;
-  font-size: 0.82rem;
 }
 
 /* Deliberately visually distinct from every other section on this page —
@@ -1262,6 +1505,17 @@ a {
   border: 1px solid var(--color-warning-border);
 }
 
+.badge-core {
+  background: #e3f0f7;
+  color: var(--color-accent);
+}
+
+.badge-future {
+  background: #fff;
+  color: #7c3aed;
+  border: 1px dashed #7c3aed;
+}
+
 .summary-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1514,5 +1768,17 @@ tr.row-selected {
 
   .about-page > section.panel {
     padding: 1.1rem 1.1rem 1.1rem 1.25rem;
+  }
+
+  .architecture-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture-map {
+    min-height: 360px;
+  }
+
+  .stepper-row {
+    gap: 0.5rem;
   }
 }
