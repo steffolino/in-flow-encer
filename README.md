@@ -178,3 +178,9 @@ render.yaml        Render Blueprint for the production backend deploy
 
 See `docs/architecture.md`, `docs/data-model.md`, and
 `docs/extension-guide.md` for the details behind each piece.
+
+## License
+
+[GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only). Copyleft:
+anyone who modifies this code and runs it as a network service must also
+make their modified source available to users of that service.

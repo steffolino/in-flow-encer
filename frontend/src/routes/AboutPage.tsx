@@ -174,6 +174,26 @@ export function AboutPage(): React.JSX.Element {
         </section>
 
         <section className="panel">
+          <h2>Research direction</h2>
+          <p>
+            A next research and development step would investigate whether this geospatial
+            pipeline can combine indicators of human pressure with protected-area, habitat,
+            species, and environmental data to support conservation monitoring and management.
+          </p>
+          <p>
+            Key open questions include how reliably digital attention signals reflect actual
+            spatial pressure, how these signals can be validated against observed visitor data,
+            and how ecological sensitivity and uncertainty should be represented without
+            conflating human presence with ecological impact.
+          </p>
+          <p>
+            The intended next step is a real-world pilot with a protected-area or conservation
+            partner using actual monitoring and environmental data. See "Where this could go"
+            below for the full target architecture and supporting literature.
+          </p>
+        </section>
+
+        <section className="panel">
           <h2>Privacy</h2>
           <ul>
             <li>All places, social content, and visitor-flow overlays shown here are synthetic.</li>
@@ -199,9 +219,17 @@ export function AboutPage(): React.JSX.Element {
             >
               GitHub
             </a>
-            , including the architecture docs and every ADR referenced on this page. There is
-            currently no license file in the repository, so no license is implied — treat the code
-            as "all rights reserved" unless the repository owner adds one.
+            , including the architecture docs and every ADR referenced on this page, under the{' '}
+            <a
+              href="https://www.gnu.org/licenses/agpl-3.0.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GNU Affero General Public License v3.0 (AGPL-3.0)
+            </a>
+            . AGPL-3.0 is copyleft: anyone who modifies this code and runs it as a network service
+            (not just anyone who redistributes it) must also make their modified source available
+            to users of that service — it exists specifically to keep server-side software open.
           </p>
         </section>
 
