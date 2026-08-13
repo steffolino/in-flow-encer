@@ -72,7 +72,7 @@ export function MapPage(): React.JSX.Element {
 
   return (
     <div className="app-shell">
-      <Header />
+      <Header showTenantSwitcher />
       <MapIntro />
       {!hasTenant && (
         <p className="status-message" role="status" style={{ padding: '0 1.25rem' }}>
