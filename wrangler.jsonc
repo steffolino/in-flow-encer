@@ -1,0 +1,5 @@
+{
+  "$schema": "./frontend/node_modules/wrangler/config-schema.json",
+  "name": "in-flow-encer",
+  "pages_build_output_dir": "./frontend/dist"
+}
