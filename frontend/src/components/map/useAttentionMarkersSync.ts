@@ -89,7 +89,7 @@ export function useAttentionMarkersSync(
         },
         layout: {
           'text-field': ['get', 'place_name'],
-          'text-font': ['Noto Sans Bold'],
+          'text-font': ['Open Sans Bold'],
           'text-size': 13,
           'text-offset': [0, 1.6],
           'text-anchor': 'top',

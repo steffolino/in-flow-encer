@@ -68,7 +68,7 @@ export function useForecastMarkersSync(
         },
         layout: {
           'text-field': ['concat', '~', ['to-string', ['get', 'forecast_score']]],
-          'text-font': ['Noto Sans Bold'],
+          'text-font': ['Open Sans Bold'],
           'text-size': 11,
           'text-offset': [0, -1.6],
           'text-anchor': 'bottom',

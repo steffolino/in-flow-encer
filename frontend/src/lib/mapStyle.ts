@@ -1,50 +1,20 @@
-import type { StyleSpecification } from 'maplibre-gl'
-
-type CartoBasemap = 'light_all' | 'dark_all'
 export type BasemapScheme = 'light' | 'dark'
 
-function cartoRasterStyle(basemap: CartoBasemap): StyleSpecification {
-  return {
-    version: 8,
-    // Required for MapLibre symbol layers such as the attention marker labels.
-    // The basemap remains raster and keyless; glyphs only provide fonts for
-    // our own GeoJSON label layers.
-    glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-    sources: {
-      basemap: {
-        type: 'raster',
-        tiles: [
-          `https://a.basemaps.cartocdn.com/${basemap}/{z}/{x}/{y}{r}.png`,
-          `https://b.basemaps.cartocdn.com/${basemap}/{z}/{x}/{y}{r}.png`,
-          `https://c.basemaps.cartocdn.com/${basemap}/{z}/{x}/{y}{r}.png`,
-          `https://d.basemaps.cartocdn.com/${basemap}/{z}/{x}/{y}{r}.png`,
-        ],
-        tileSize: 256,
-        attribution: '© OpenStreetMap contributors © CARTO',
-        maxzoom: 20,
-      },
-    },
-    layers: [
-      {
-        id: 'basemap',
-        type: 'raster',
-        source: 'basemap',
-      },
-    ],
-  }
-}
-
 /**
- * Minimal raster basemaps so the app runs without a vector-tile provider API
- * key. CARTO's Positron light tiles and Dark Matter dark tiles are both
- * OpenStreetMap-based, keyless raster styles; our own attention, forecast,
- * and overlay layers sit above whichever style is active.
+ * CARTO's published vector GL styles (Positron / Dark Matter), fetched
+ * directly by MapLibre from their style.json URLs. These require no API
+ * key. CARTO's older raster tile CDN (a/b/c/d.basemaps.cartocdn.com/*.png)
+ * has since been locked down to watermarked "API KEY REQUIRED" tiles for
+ * anonymous requests, which is why we no longer build a custom raster
+ * style around it. Our own attention, forecast, and overlay layers sit
+ * above whichever style is active; their label layers use a font
+ * (`Open Sans Bold`) served by CARTO's own glyphs endpoint, since these
+ * styles' `glyphs` field points there rather than at demotiles.maplibre.org.
  */
-export const BASEMAP_STYLES: Record<BasemapScheme, StyleSpecification> = {
-  light: cartoRasterStyle('light_all'),
-  dark: cartoRasterStyle('dark_all'),
+export const BASEMAP_STYLES: Record<BasemapScheme, string> = {
+  light: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  dark: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
 }
 
-export const BASEMAP_STYLE = BASEMAP_STYLES.light
 export const BAVARIAN_ALPS_CENTER: [number, number] = [11.09, 47.49]
 export const DEFAULT_ZOOM = 9
