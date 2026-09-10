@@ -9,22 +9,27 @@ with per-layer visibility/opacity/legend controls, without a commercial
 mapping license.
 
 ## Decision
-Use MapLibre GL JS (open-source, no API key required) with a keyless raster
+Use MapLibre GL JS (open-source, no API key required) with a keyless
 basemap, rendering GeoJSON sources for the attention heatmap, social-content
 points, and overlay features as native MapLibre layers (`heatmap`, `circle`,
 `line`, `fill` depending on `geometry_type`).
 
-Basemap tiles come from CARTO's free "Positron" raster style (built on
-OpenStreetMap data), not stock OSM raster tiles — same no-API-key, no-vendor-
-lock-in deal, but a deliberately muted, low-contrast style so the app's own
+Basemap tiles come from CARTO's free "Positron" / "Dark Matter" vector GL
+styles (built on OpenStreetMap data), fetched directly from CARTO's
+`style.json` URLs — same no-API-key, no-vendor-lock-in deal as stock OSM
+raster tiles, but a deliberately muted, low-contrast style so the app's own
 attention/forecast/overlay markers read clearly instead of competing with
 OSM's default style's dense road/POI iconography. `frontend/src/lib/mapStyle.ts`
-has the full rationale.
+has the full rationale, including why this is a vector style rather than a
+custom raster one: CARTO discontinued free anonymous access to its legacy
+raster tile CDN (`a/b/c/d.basemaps.cartocdn.com`), which now serves
+watermarked "API KEY REQUIRED" placeholder tiles instead of real map imagery.
 
-The style also includes MapLibre's public demo glyph endpoint so symbol
-layers with `text-field` labels (e.g. attention marker labels) can render.
-This does not change the basemap decision: tiles are still a keyless raster
-source and no commercial API key is required.
+Our own symbol layers with `text-field` labels (e.g. attention marker
+labels) render using a font (`Open Sans Bold`) served by these styles' own
+glyphs endpoint, since a MapLibre style has one glyphs URL for the whole
+map. This does not change the basemap decision: tiles are still keyless and
+no commercial API key is required.
 
 ## Consequences
 - No vendor lock-in or API key management for the MVP.
