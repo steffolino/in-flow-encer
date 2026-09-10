@@ -6,6 +6,7 @@ import { ForecastPanel } from '../summary/ForecastPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
+import { isStaticDemo } from '../../api/demo'
 import { useUI, type MobileSheetId } from '../../state/ui'
 import { MobileSheet } from './MobileSheet'
 import type { AttentionCell, ForecastCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
@@ -144,8 +145,7 @@ export function MobileLayout({
       )}
       {ui.mobileSheet === 'import' && (
         <MobileSheet title={SHEET_TITLES.import} onClose={closeSheet} onBack={openMenu}>
-          <SocialContentImport />
-          <OverlayUpload />
+          {isStaticDemo ? <p>This demo uses a read-only data snapshot. Imports and uploads are available when running the local backend.</p> : <><SocialContentImport /><OverlayUpload /></>}
         </MobileSheet>
       )}
     </>

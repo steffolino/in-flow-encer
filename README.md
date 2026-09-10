@@ -17,14 +17,13 @@ Eibsee, Königssee, etc.) are approximate public geographic reference points.
 A running instance is deployed at **https://inflowencer.stefanstretz.de**
 (also reachable at https://in-flow-encer.pages.dev):
 
-- Frontend: Cloudflare Pages (static build of `frontend/`)
-- Backend: Render free web service (`in-flow-encer-backend.onrender.com`),
-  runs Alembic migrations automatically on boot
-- Database: Supabase PostgreSQL + PostGIS
+- Cloudflare Pages serves the frontend and a JSON snapshot of the demo database.
+- Filters, attention, forecasts, and overlays work from that snapshot in the browser.
+- The deployed demo needs no Render API or live database. Imports and uploads
+  remain available when running the local backend.
 
-See `docs/adr/0007-production-deployment-topology.md` for how this maps onto
-the local Docker Compose setup and what would change for a non-free-tier
-deployment.
+See `docs/adr/0009-static-demo-snapshot.md` for snapshot refresh and deployment
+commands. The local Docker Compose setup retains the full backend and database.
 
 ## What's implemented
 
@@ -172,7 +171,7 @@ backend/          FastAPI + SQLAlchemy + Alembic, domain/application/infrastruct
 docs/             architecture, data model, extension guide, assumptions, ADRs
 sample-data/      synthetic fixtures and overlay files used by the seed command
 docker-compose.yml
-render.yaml        Render Blueprint for the production backend deploy
+render.yaml        Historical Render Blueprint (unused by the static demo)
 .env.example
 ```
 

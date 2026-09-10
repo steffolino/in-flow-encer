@@ -7,6 +7,7 @@ import {
 } from '../../lib/colors'
 import { formatDateTime } from '../../lib/format'
 import { usePatchOverlay } from '../../api/useOverlayMutations'
+import { isStaticDemo } from '../../api/demo'
 import {
   ATTENTION_HEATMAP_LAYER_ID,
   FORECAST_LAYER_ID,
@@ -119,7 +120,7 @@ export function LayerControls({ overlays }: LayerControlsProps): React.JSX.Eleme
               state={state}
               dispatch={dispatch}
               onVisibleChange={(visible) => {
-                patchOverlay.mutate({ id: overlay.id, visibility: visible ? 'visible' : 'hidden' })
+                if (!isStaticDemo) patchOverlay.mutate({ id: overlay.id, visibility: visible ? 'visible' : 'hidden' })
               }}
             />
             <ul className="legend-list" aria-label={`${overlay.name} legend`}>

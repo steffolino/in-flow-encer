@@ -1,7 +1,9 @@
 # ADR 0007: Production deployment topology (Cloudflare Pages + Render + Supabase)
 
 ## Status
-Accepted
+Superseded by [ADR 0009](0009-static-demo-snapshot.md) for the public demo.
+This topology remains available for a deployment with a real backend
+(see ADR 0009's "override" note).
 
 ## Context
 The Docker Compose setup (ADR-adjacent, see `docker-compose.yml`) is for

@@ -9,11 +9,10 @@
  */
 import type { ZodType } from 'zod'
 import { apiErrorSchema } from './schemas'
+import { demoRequest, isStaticDemo } from './demo'
 
-// In local dev this stays '/api/v1' and Vite's dev-server proxy (vite.config.ts)
-// forwards it to the backend. In a static production build (Cloudflare Pages
-// etc.) there is no proxy, so VITE_API_BASE_URL must be baked in at build
-// time to the backend's full public URL, e.g. https://api.example.com/api/v1.
+// Production demos use the bundled JSON snapshot. Backend mode uses Vite's
+// /api proxy locally, or an explicitly configured API base URL.
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '/api/v1'
 
 export class ApiError extends Error {
@@ -80,7 +79,7 @@ async function request<T>(
   resourceName: string,
   init?: RequestInit,
 ): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = isStaticDemo ? await demoRequest(path, currentTenantSlug, init?.method) : await fetch(`${API_BASE}${path}`, {
     ...init,
     headers: buildHeaders(init?.headers),
   })
@@ -145,10 +144,10 @@ export function apiPatchJson<T>(
 }
 
 export function apiDelete(path: string): Promise<void> {
-  return fetch(`${API_BASE}${path}`, {
+  return (isStaticDemo ? demoRequest(path, currentTenantSlug, 'DELETE') : fetch(`${API_BASE}${path}`, {
     method: 'DELETE',
     headers: buildHeaders(),
-  }).then(async (response) => {
+  })).then(async (response) => {
     if (!response.ok) {
       const errorBody = await readErrorBody(response)
       throw new ApiError(response.status, errorBody.code, errorBody.message, errorBody.details)

@@ -6,6 +6,7 @@ import { ForecastPanel } from '../summary/ForecastPanel'
 import { ResultsTable } from '../summary/ResultsTable'
 import { OverlayUpload } from '../import/OverlayUpload'
 import { SocialContentImport } from '../import/SocialContentImport'
+import { isStaticDemo } from '../../api/demo'
 import { useUI, type PanelId } from '../../state/ui'
 import { FloatingPanel } from './FloatingPanel'
 import type { AttentionCell, ForecastCell, OverlayLayer, ComparisonItem } from '../../api/schemas'
@@ -147,8 +148,7 @@ export function DesktopLayout({
       )}
       {ui.desktopOpenPanel === 'import' && (
         <FloatingPanel title={PANEL_LABELS.import} side="right" onClose={closePanel}>
-          <SocialContentImport />
-          <OverlayUpload />
+          {isStaticDemo ? <p>This demo uses a read-only data snapshot. Imports and uploads are available when running the local backend.</p> : <><SocialContentImport /><OverlayUpload /></>}
         </FloatingPanel>
       )}
 

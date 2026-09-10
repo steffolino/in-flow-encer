@@ -32,20 +32,18 @@ docker compose exec frontend npm run test:e2e
 ```
 
 ## Production deployment
-Live at https://inflowencer.stefanstretz.de — Cloudflare Pages (frontend) +
-Render (backend, `in-flow-encer-backend.onrender.com`) + Supabase Postgres.
-See `docs/adr/0007-production-deployment-topology.md`. To redeploy the
-frontend after a change:
+The public demo at https://inflowencer.stefanstretz.de runs entirely on
+Cloudflare Pages, using frontend/public/demo/snapshot.json. Production builds
+enable VITE_STATIC_DEMO=true; no Render or live database is needed.
+See docs/adr/0009-static-demo-snapshot.md for export and verification steps.
+
 ```bash
-cd frontend
-VITE_API_BASE_URL="https://in-flow-encer-backend.onrender.com/api/v1" npm run build
-npx wrangler pages deploy dist --project-name in-flow-encer --branch main
+npm run build --prefix frontend
+npx wrangler pages deploy frontend/dist --project-name in-flow-encer --branch main
 ```
-The backend redeploys automatically on push to `main` (Render is connected
-to the GitHub repo). To re-seed or run a one-off script against the
-production Supabase database, point `APP_DATABASE_URL` at its session
-pooler connection string (see ADR 0007 for why it must be the session
-pooler, not the direct host or transaction pooler).
+
+Development still uses the FastAPI/PostGIS backend. Only export public demo
+data to the JSON snapshot. Imports and uploads are unavailable in snapshot mode.
 
 ## Conventions
 - Backend: full type hints, domain-specific exceptions
